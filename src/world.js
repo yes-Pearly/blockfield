@@ -1,4 +1,5 @@
 import {B, BLOCKS,isSolid} from './blocks.js';
+import {validateGameplay,ITEMS} from './survival.js';
 export const SIZE=16, HEIGHT=80, SEA=22, SAVE_VERSION=1;
 export const chunkKey=(x,z)=>`${x},${z}`;
 export const blockKey=(x,y,z)=>`${x},${y},${z}`;
@@ -54,5 +55,5 @@ export function validateSave(v){
  if(!v||v.format!=='blockfield'||v.version!==SAVE_VERSION||typeof v.seed!=='string'||v.seed.length>100||!Array.isArray(v.edits)||v.edits.length>500000)throw Error('Ce fichier n’est pas une sauvegarde Blockfield compatible.');
  for(const e of v.edits)if(!Array.isArray(e)||e.length!==4||!e.every(Number.isInteger)||Math.abs(e[0])>1e7||Math.abs(e[2])>1e7||e[1]<1||e[1]>=HEIGHT||e[3]<0||e[3]>=BLOCKS.length)throw Error('La sauvegarde contient des blocs invalides.');
  if(v.player){if(!['x','y','z','yaw','pitch'].every(k=>Number.isFinite(v.player[k]))||Math.abs(v.player.x)>1e7||Math.abs(v.player.z)>1e7||v.player.y<0||v.player.y>10000)throw Error('Position de joueur invalide.');}
- if(v.hotbar&&(!Array.isArray(v.hotbar)||v.hotbar.length!==9||!v.hotbar.every(n=>Number.isInteger(n)&&n>0&&n<BLOCKS.length)))throw Error('Inventaire invalide.');return v;
+ if(v.hotbar&&(!Array.isArray(v.hotbar)||v.hotbar.length!==9||!v.hotbar.every(n=>Number.isInteger(n)&&ITEMS.has(n))))throw Error('Inventaire invalide.');if(v.game)validateGameplay(v.game);return v;
 }

@@ -1,18 +1,31 @@
-// Original, code-generated textures. No Mojang files are included.
-export const B = Object.freeze({AIR:0,GRASS:1,DIRT:2,STONE:3,COBBLE:4,PLANKS:5,LOG:6,LEAVES:7,SAND:8,SANDSTONE:9,BRICKS:10,GLASS:11,WATER:12,BEDROCK:13,COAL:14,IRON:15,GOLD:16,DIAMOND:17,REDSTONE:18,OBSIDIAN:19,CLAY:20,SNOW:21,GRAVEL:22,WHITE:23,RED:24,ORANGE:25,YELLOW:26,LIME:27,GREEN:28,CYAN:29,BLUE:30,PURPLE:31,PINK:32,BLACK:33,CRAFT:34,TNT:35,BOOKS:36,GLOW:37,MOSS:38,STONEBRICK:39,BIRCH:40,BIRCHPLANKS:41});
+// Pixel Perfection/VoxeLibre textures: CC BY-SA 3.0. See ASSETS.md.
+// Code-generated fallback textures are kept for loading failures only.
+export const B = Object.freeze({AIR:0,GRASS:1,DIRT:2,STONE:3,COBBLE:4,PLANKS:5,LOG:6,LEAVES:7,SAND:8,SANDSTONE:9,BRICKS:10,GLASS:11,WATER:12,BEDROCK:13,COAL:14,IRON:15,GOLD:16,DIAMOND:17,REDSTONE:18,OBSIDIAN:19,CLAY:20,SNOW:21,GRAVEL:22,WHITE:23,RED:24,ORANGE:25,YELLOW:26,LIME:27,GREEN:28,CYAN:29,BLUE:30,PURPLE:31,PINK:32,BLACK:33,CRAFT:34,TNT:35,BOOKS:36,GLOW:37,MOSS:38,STONEBRICK:39,BIRCH:40,BIRCHPLANKS:41,FURNACE:42});
 const list=[
- ['Air','#ffffff','nature'],['Herbe','#779d45','nature'],['Terre','#926744','nature'],['Pierre','#888d91','nature'],['Pierre taillée','#747c7f','construction'],['Planches de chêne','#bb914f','construction'],['Bûche de chêne','#775536','nature'],['Feuilles de chêne','#4f873b','nature'],['Sable','#ddcc8b','nature'],['Grès','#c7b77c','construction'],['Briques','#b96b51','construction'],['Verre','#bddde3','construction'],['Eau','#448ba8','nature'],['Roche mère','#44454a','nature'],['Minerai de charbon','#484a4c','nature'],['Minerai de fer','#c49e82','nature'],['Minerai d’or','#e3bb4c','nature'],['Minerai de diamant','#67d4cf','nature'],['Minerai de redstone','#c14b43','nature'],['Obsidienne','#37304e','nature'],['Argile','#91a0af','nature'],['Neige','#e6edf1','nature'],['Gravier','#9b958e','nature'],['Laine blanche','#efeee6','couleurs'],['Laine rouge','#b9423c','couleurs'],['Laine orange','#e58839','couleurs'],['Laine jaune','#e1c746','couleurs'],['Laine vert clair','#8eb547','couleurs'],['Laine verte','#4c7544','couleurs'],['Laine cyan','#3a929a','couleurs'],['Laine bleue','#4b68ad','couleurs'],['Laine violette','#8053a5','couleurs'],['Laine rose','#d88d9e','couleurs'],['Laine noire','#34373e','couleurs'],['Établi décoratif','#9e713f','construction'],['TNT décorative','#ba4a3c','construction'],['Bibliothèque','#a67b45','construction'],['Pierre lumineuse','#e4c978','construction'],['Pierre moussue','#647e52','construction'],['Briques de pierre','#939697','construction'],['Bûche de bouleau','#d0ccb2','nature'],['Planches de bouleau','#d8c58a','construction']
+ ['Air','#ffffff','nature'],['Herbe','#779d45','nature'],['Terre','#926744','nature'],['Pierre','#888d91','nature'],['Pierre taillée','#747c7f','construction'],['Planches de chêne','#bb914f','construction'],['Bûche de chêne','#775536','nature'],['Feuilles de chêne','#4f873b','nature'],['Sable','#ddcc8b','nature'],['Grès','#c7b77c','construction'],['Briques','#b96b51','construction'],['Verre','#bddde3','construction'],['Eau','#448ba8','nature'],['Roche mère','#44454a','nature'],['Minerai de charbon','#484a4c','nature'],['Minerai de fer','#c49e82','nature'],['Minerai d’or','#e3bb4c','nature'],['Minerai de diamant','#67d4cf','nature'],['Minerai de redstone','#c14b43','nature'],['Obsidienne','#37304e','nature'],['Argile','#91a0af','nature'],['Neige','#e6edf1','nature'],['Gravier','#9b958e','nature'],['Laine blanche','#efeee6','couleurs'],['Laine rouge','#b9423c','couleurs'],['Laine orange','#e58839','couleurs'],['Laine jaune','#e1c746','couleurs'],['Laine vert clair','#8eb547','couleurs'],['Laine verte','#4c7544','couleurs'],['Laine cyan','#3a929a','couleurs'],['Laine bleue','#4b68ad','couleurs'],['Laine violette','#8053a5','couleurs'],['Laine rose','#d88d9e','couleurs'],['Laine noire','#34373e','couleurs'],['Établi','#9e713f','construction'],['TNT décorative','#ba4a3c','construction'],['Bibliothèque','#a67b45','construction'],['Pierre lumineuse','#e4c978','construction'],['Pierre moussue','#647e52','construction'],['Briques de pierre','#939697','construction'],['Bûche de bouleau','#d0ccb2','nature'],['Planches de bouleau','#d8c58a','construction'],['Four','#777777','construction']
 ];
 export const BLOCKS=list.map(([name,color,category],id)=>({id,name,color,category,solid:id!==0&&id!==12,transparent:[0,7,11,12].includes(id),tile:id}));
 export const PALETTE=BLOCKS.slice(1);
 export const DEFAULT_HOTBAR=[1,2,3,4,5,6,7,11,10];
 export const isSolid=id=>!!BLOCKS[id]?.solid;
-export const faceTile=(id,face)=>id===B.GRASS?(face===2?42:face===3?B.DIRT:43):id===B.LOG?(face===2||face===3?44:B.LOG):id===B.BIRCH?(face===2||face===3?45:B.BIRCH):id===B.CRAFT?(face===2?46:B.CRAFT):id===B.TNT?(face===2||face===3?47:B.TNT):id;
+export const faceTile=(id,face)=>id===B.FURNACE?(face===4?48:face===2||face===3?49:50):id===B.GRASS?(face===2?42:face===3?B.DIRT:43):id===B.LOG?(face===2||face===3?44:B.LOG):id===B.BIRCH?(face===2||face===3?45:B.BIRCH):id===B.CRAFT?(face===2?46:B.CRAFT):id===B.TNT?(face===2||face===3?47:B.TNT):id;
 export const ATLAS_COLS=8, ATLAS_ROWS=8, TILE=16, CELL=18;
 function rng(seed){return()=>{seed=(Math.imul(seed,1664525)+1013904223)|0;return(seed>>>0)/4294967296;};}
+let assetURLs={},assetImages={};
+export const assetURL=name=>assetURLs[name]??'';
+export const textureImage=name=>assetImages[name];
+export async function loadTextures(){
+ const r=await fetch(new URL('../assets/textures.json',import.meta.url));if(!r.ok)throw Error('Textures indisponibles.');assetURLs=await r.json();try{const custom=JSON.parse(localStorage.getItem('blockfield-java-textures')??'null');if(custom&&typeof custom==='object')Object.assign(assetURLs,custom);}catch{}await Promise.all(Object.entries(assetURLs).map(([name,url])=>new Promise((resolve,reject)=>{if(typeof url!=='string'||!url.startsWith('data:image/png;base64,'))return resolve();const img=new Image();img.onload=()=>{assetImages[name]=img;resolve();};img.onerror=()=>resolve();img.src=url;})));iconCache.clear();globalThis.__blockAtlas=makeAtlas();return globalThis.__blockAtlas;
+}
+const textureNames=['','mcl_core_grass_block_top','default_dirt','default_stone','default_cobble','default_wood','default_tree','default_leaves','default_sand','mcl_core_sandstone_normal','default_brick','default_glass','mcl_core_water_source_animation','mcl_core_bedrock','mcl_core_coal_ore','mcl_core_iron_ore','mcl_core_gold_ore','mcl_core_diamond_ore','mcl_core_redstone_ore','default_obsidian','default_clay','default_snow','default_gravel','wool_white','wool_red','wool_orange','wool_yellow','mcl_wool_lime','wool_dark_green','wool_cyan','wool_blue','wool_violet','wool_pink','wool_black','crafting_workbench_front','default_tnt_side','default_bookshelf','mcl_nether_glowstone','default_mossycobble','default_stone_brick','mcl_core_log_birch','mcl_core_planks_birch','mcl_core_grass_block_top','mcl_core_grass_block_side_overlay','default_tree_top','mcl_core_log_birch_top','crafting_workbench_top','default_tnt_top','default_furnace_front','default_furnace_top','default_furnace_side'];
+function applyTexture(c,t){
+ const img=assetImages[textureNames[t]];if(!img)return;const temp=document.createElement('canvas');temp.width=temp.height=16;const q=temp.getContext('2d');q.imageSmoothingEnabled=false;q.drawImage(img,0,0,img.width,img.width,0,0,16,16);
+ if([1,7,12,42,43].includes(t)){q.globalCompositeOperation='multiply';q.fillStyle=t===12?'#448ce4':t===7?'#60a440':'#87b54f';q.fillRect(0,0,16,16);q.globalCompositeOperation='destination-in';q.drawImage(img,0,0,img.width,img.width,0,0,16,16);q.globalCompositeOperation='source-over';}
+ c.clearRect(0,0,16,16);if(t===43){const dirt=assetImages.default_dirt;c.drawImage(dirt,0,0,dirt.width,dirt.width,0,0,16,16);}c.drawImage(temp,0,0);
+}
 export function makeAtlas(){
  const canvas=document.createElement('canvas');canvas.width=ATLAS_COLS*CELL;canvas.height=ATLAS_ROWS*CELL;const ctx=canvas.getContext('2d');
- for(let t=0;t<48;t++){
+ for(let t=0;t<51;t++){
   const r=rng(t*873+47),tile=document.createElement('canvas');tile.width=tile.height=16;const c=tile.getContext('2d');const id=t<42?t:t===42?1:t===43?2:t===44?6:t===45?40:t===46?34:35;
   c.fillStyle=BLOCKS[id].color;c.fillRect(0,0,16,16);
   for(let y=0;y<16;y++)for(let x=0;x<16;x++){const n=r();c.fillStyle=n>.5?`rgba(255,255,255,${(n-.5)*.22})`:`rgba(0,0,0,${(.5-n)*.28})`;c.fillRect(x,y,1,1);}
@@ -31,6 +44,7 @@ export function makeAtlas(){
   if(t===47){rect(2,2,12,12,'#cd6d52');rect(7,2,2,8,'#34362f');rect(8,1,2,3,'#d9bd8a');}
   if(t===36){rect(0,1,16,2,'#d6ac65');rect(0,8,16,2,'#d6ac65');rect(0,15,16,1,'#59422d');for(let x=1;x<15;x+=2){rect(x,3,1,5,['#a94b40','#487578','#dfb660'][x%3]);rect(x,10,1,5,['#426345','#b4493d','#698ca5'][x%3]);}}
   if(t===37)for(let i=0;i<24;i++)rect(r()*15|0,r()*15|0,2,2,'#fff0b6');
+  applyTexture(c,t);
   const ox=(t%8)*CELL+1,oy=(t/8|0)*CELL+1;ctx.drawImage(tile,ox,oy);ctx.drawImage(tile,0,0,16,1,ox,oy-1,16,1);ctx.drawImage(tile,0,15,16,1,ox,oy+16,16,1);ctx.drawImage(tile,0,0,1,16,ox-1,oy,1,16);ctx.drawImage(tile,15,0,1,16,ox+16,oy,1,16);
  }
  return canvas;
@@ -41,3 +55,4 @@ export function blockIcon(id){
  const face=(points,t,shade)=>{ctx.save();ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.clip();const [p0,p1,,p3]=points;ctx.setTransform((p1[0]-p0[0])/16,(p1[1]-p0[1])/16,(p3[0]-p0[0])/16,(p3[1]-p0[1])/16,p0[0],p0[1]);ctx.drawImage(atlas,t%8*CELL+1,(t/8|0)*CELL+1,16,16,0,0,16,16);if(shade){ctx.fillStyle=`rgba(0,0,0,${shade})`;ctx.fillRect(0,0,16,16);}ctx.restore();};
  face([[32,3],[59,17],[32,32],[5,17]],faceTile(id,2),0);face([[5,17],[32,32],[32,61],[5,46]],faceTile(id,4),.13);face([[32,32],[59,17],[59,46],[32,61]],faceTile(id,0),.3);const url=c.toDataURL();iconCache.set(id,url);return url;
 }
+

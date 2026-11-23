@@ -16,5 +16,6 @@ test('multiple fingers can move, look, jump and build independently; cancellatio
  element('joystick').fire('pointerdown',{pointerId:11,clientX:50,clientY:20});canvas.fire('pointerdown',{pointerId:22,clientX:200,clientY:100});canvas.fire('pointermove',{pointerId:22,clientX:220,clientY:110});element('jump').fire('pointerdown',{pointerId:33});element('place-block').fire('pointerdown',{pointerId:44});
  assert.equal(c.read().forward,1);assert.equal(c.read().jump,true);assert.deepEqual(actions,['place']);assert.ok(c.consumeLook().x>0);assert.equal(c.holds.has('place'),true);
  element('joystick').fire('pointercancel',{pointerId:11});assert.equal(c.read().forward,0);assert.equal(c.read().jump,true);canvas.fire('pointermove',{pointerId:22,clientX:240,clientY:110});assert.ok(c.consumeLook().x>0);
+ canvas.fire('pointerup',{pointerId:22});assert.equal(c.holds.has('place'),true);
  element('jump').fire('lostpointercapture',{pointerId:33});assert.equal(c.read().jump,false);element('place-block').fire('pointerup',{pointerId:44});assert.equal(c.holds.has('place'),false);c.reset();assert.equal(c.pointer,null);assert.equal(c.joyPointer,null);assert.equal(c.keys.size,0);
 });

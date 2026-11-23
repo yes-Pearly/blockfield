@@ -1,0 +1,401 @@
+{
+  "source": "https://github.com/VoxeLibre/VoxeLibre",
+  "revision": "4492ce6ff8d856daa4567abe2ea689f4e7a39842",
+  "license": "CC BY-SA 3.0",
+  "authors": [
+    "XSSheep (Pixel Perfection)",
+    "VoxeLibre contributors"
+  ],
+  "files": [
+    {
+      "name": "default_dirt",
+      "sourcePath": "textures/default_dirt.png",
+      "sha256": "ca53d237c809111c0f1bf2618bd7482e458e8ee880b13cb4dc7e8b6447e5c1b0"
+    },
+    {
+      "name": "default_stone",
+      "sourcePath": "textures/default_stone.png",
+      "sha256": "f741bae514fa506fed3daf9977e629509c730431afe06d9d144c027cc8c17352"
+    },
+    {
+      "name": "default_cobble",
+      "sourcePath": "textures/default_cobble.png",
+      "sha256": "baf23e5753c440397ab20c4d5a3b336266e3d2477be3cb1c238685804c1fea57"
+    },
+    {
+      "name": "default_wood",
+      "sourcePath": "textures/default_wood.png",
+      "sha256": "275c8d25b28eea48c862ad7539690060c0693881e4becd9de0b1398b165ab1b2"
+    },
+    {
+      "name": "default_tree",
+      "sourcePath": "textures/default_tree.png",
+      "sha256": "cfed4aa80b0eeb97f28c56508fa9308fe336e9ed9f598a0618a7de4d4805366c"
+    },
+    {
+      "name": "default_tree_top",
+      "sourcePath": "textures/default_tree_top.png",
+      "sha256": "1e6ce5091cce092d46e687485caf5f7bb4a0763068183328bad5b6f7efdc2e4f"
+    },
+    {
+      "name": "default_leaves",
+      "sourcePath": "textures/default_leaves.png",
+      "sha256": "b7678d51990bc8686cd3309a57c25c8bcb4e6cfdbc2ca7ea7d54c3eeae82dda5"
+    },
+    {
+      "name": "default_sand",
+      "sourcePath": "textures/default_sand.png",
+      "sha256": "0710fe5e8f194c2037ec792024e00894d7e0d149710d715caa352c6e3a153488"
+    },
+    {
+      "name": "mcl_core_sandstone_normal",
+      "sourcePath": "textures/mcl_core_sandstone_normal.png",
+      "sha256": "5695753ef2d35d249301762b604e5bfb9687a0bb70b54cb0c5ce4c7e5ca971a6"
+    },
+    {
+      "name": "default_brick",
+      "sourcePath": "textures/default_brick.png",
+      "sha256": "7b4a6a3526f0e6a86eb120db49de45103b2de103d55dc488d9cceee3478d7911"
+    },
+    {
+      "name": "default_glass",
+      "sourcePath": "textures/default_glass.png",
+      "sha256": "9600272c0255d508304f83d2b7f5ae718a1af892ef5763c127954a3222ed57df"
+    },
+    {
+      "name": "mcl_core_water_source_animation",
+      "sourcePath": "textures/mcl_core_water_source_animation.png",
+      "sha256": "e224f909379dab19e4fc0472c59a1f69890bf9d6ec610f44cec95dbe62d408ab"
+    },
+    {
+      "name": "mcl_core_bedrock",
+      "sourcePath": "textures/mcl_core_bedrock.png",
+      "sha256": "94cd42bbe7405c36f0dcd10fb4c262c834548c0fa1e735658e6e2af4b168ecf0"
+    },
+    {
+      "name": "mcl_core_coal_ore",
+      "sourcePath": "textures/mcl_core_coal_ore.png",
+      "sha256": "256b5e841d8ba4c9877d408c36d2b5a95d7a672663e96718ee55d7d87b717521"
+    },
+    {
+      "name": "mcl_core_iron_ore",
+      "sourcePath": "textures/mcl_core_iron_ore.png",
+      "sha256": "13b002a89b6de74c09779240385f1871fb508296b45898b5be71a897b004887a"
+    },
+    {
+      "name": "mcl_core_gold_ore",
+      "sourcePath": "textures/mcl_core_gold_ore.png",
+      "sha256": "96c1ba689acc3212eb72204dd0a6f2c3313c25be6556281ac5ba97b388f598a5"
+    },
+    {
+      "name": "mcl_core_diamond_ore",
+      "sourcePath": "textures/mcl_core_diamond_ore.png",
+      "sha256": "5d37d2e90dad49c0287fe100a61eeeb25fab6ba2739cc59f49e82b81aa014ae3"
+    },
+    {
+      "name": "mcl_core_redstone_ore",
+      "sourcePath": "textures/mcl_core_redstone_ore.png",
+      "sha256": "fa25b6a4dc97772e1ddc7ea626109c2687e19ad68cfc48778dbf068ef6b6bf16"
+    },
+    {
+      "name": "default_obsidian",
+      "sourcePath": "textures/default_obsidian.png",
+      "sha256": "da2885796ccd1bbbff2a9c252336b5e971d6ead0dcf5a7171a4e81228e6cb011"
+    },
+    {
+      "name": "default_clay",
+      "sourcePath": "textures/default_clay.png",
+      "sha256": "d26bac862ee0169f6b525e85a33eb29e1895c76b6f055b118216395e24c2b947"
+    },
+    {
+      "name": "default_snow",
+      "sourcePath": "textures/default_snow.png",
+      "sha256": "cd4e066144c43212a987c44192083499acbd07bb0fac1a44bbc08f4238a30f91"
+    },
+    {
+      "name": "default_gravel",
+      "sourcePath": "textures/default_gravel.png",
+      "sha256": "fee7f52201f28999b6b5ac0381106a23b5b70bf9e32e4dfd4048b90a669ffb5d"
+    },
+    {
+      "name": "wool_white",
+      "sourcePath": "textures/wool_white.png",
+      "sha256": "cff91fa4e76b333828e72bf7f0903e99b99a98af5b016a222386adae51c570e2"
+    },
+    {
+      "name": "wool_red",
+      "sourcePath": "textures/wool_red.png",
+      "sha256": "743542f93e902a06acd71eb6f1e917d7a266bd61ef52a9aa610053af95e5c2a2"
+    },
+    {
+      "name": "wool_orange",
+      "sourcePath": "textures/wool_orange.png",
+      "sha256": "eafd61d3a04740aab737673ca2abf6796845c1285344bd82bdeea137355ea992"
+    },
+    {
+      "name": "wool_yellow",
+      "sourcePath": "textures/wool_yellow.png",
+      "sha256": "66fbe6fa731799fbeaf4412e3b373766ea8a027f9b250fc4b6ff83237c3ec895"
+    },
+    {
+      "name": "mcl_wool_lime",
+      "sourcePath": "textures/mcl_wool_lime.png",
+      "sha256": "1c417cd2699d6706802cb0f695d496cd6b7b2b8e1ea02218f227cc0942b6cb1c"
+    },
+    {
+      "name": "wool_dark_green",
+      "sourcePath": "textures/wool_dark_green.png",
+      "sha256": "68a37e5e780b2fbadae5a45612e3f18c9f67c41c6a25027c34907d17ecb0ec9c"
+    },
+    {
+      "name": "wool_cyan",
+      "sourcePath": "textures/wool_cyan.png",
+      "sha256": "b4d1f03f2d3cbe585f1b51da8d2ee08e1b64f8305ffb92bb3a2a5af2d64aaacc"
+    },
+    {
+      "name": "wool_blue",
+      "sourcePath": "textures/wool_blue.png",
+      "sha256": "a6a26b4f99155acf84af14ea57fd3e70a31a09b8dd74b1a6f2dc879b26dcc30e"
+    },
+    {
+      "name": "wool_violet",
+      "sourcePath": "textures/wool_violet.png",
+      "sha256": "48508db151d306081c79421053c7f21fc1c5b54005f7ba8a7a2feca9da09e398"
+    },
+    {
+      "name": "wool_pink",
+      "sourcePath": "textures/wool_pink.png",
+      "sha256": "8bf82704b4849201d7953ca93d7ab9b7d1ab9226ae1dbd9ad01628ef189edcec"
+    },
+    {
+      "name": "wool_black",
+      "sourcePath": "textures/wool_black.png",
+      "sha256": "94eec16544caea6b3a70326a3f5268c3f7684975cbcc5340e4ba5ae9cf0efce1"
+    },
+    {
+      "name": "crafting_workbench_front",
+      "sourcePath": "textures/crafting_workbench_front.png",
+      "sha256": "260f7115e796f6611d71c23ba2c97c8b5f38d9b0d7accd4c1c35cc9c49fab494"
+    },
+    {
+      "name": "crafting_workbench_side",
+      "sourcePath": "textures/crafting_workbench_side.png",
+      "sha256": "260f7115e796f6611d71c23ba2c97c8b5f38d9b0d7accd4c1c35cc9c49fab494"
+    },
+    {
+      "name": "crafting_workbench_top",
+      "sourcePath": "textures/crafting_workbench_top.png",
+      "sha256": "5b22ae15b35e77b8d68f02fca3a9e2d7da0af15fb6c285e68f518bef4ddeeb8b"
+    },
+    {
+      "name": "default_tnt_side",
+      "sourcePath": "textures/default_tnt_side.png",
+      "sha256": "80b1282327b8cd8b8cb3b55c0109f563b604359df920ae6ef3fe00c6caa55d35"
+    },
+    {
+      "name": "default_tnt_top",
+      "sourcePath": "textures/default_tnt_top.png",
+      "sha256": "4a4838b7652d56b17c2bb42635df598ffb579870aa7fc343299c1fbf30a4693e"
+    },
+    {
+      "name": "default_tnt_bottom",
+      "sourcePath": "textures/default_tnt_bottom.png",
+      "sha256": "5b5eebfc66cb634ba311abf6edc6274e349111df5a69d4e3174031afa4be1cec"
+    },
+    {
+      "name": "default_bookshelf",
+      "sourcePath": "textures/default_bookshelf.png",
+      "sha256": "4366509b8a14eaf3f0c2fd95c6b91fd108933d002c616c587d4ae6de8ccaedfa"
+    },
+    {
+      "name": "mcl_nether_glowstone",
+      "sourcePath": "textures/mcl_nether_glowstone.png",
+      "sha256": "9578211066cfdebb56bdbf431f45f03aa73d312af832679d2f91a882821d5b72"
+    },
+    {
+      "name": "default_mossycobble",
+      "sourcePath": "textures/default_mossycobble.png",
+      "sha256": "3c62821731d163f6115ace6fa46e4a7e9c832e4ef84bd22431eb33973ac8d63a"
+    },
+    {
+      "name": "default_stone_brick",
+      "sourcePath": "textures/default_stone_brick.png",
+      "sha256": "ee6b56d185db69f6c0b5673bb0500dbb3fe6d4c331f37ceb1bf8a20e1387ee82"
+    },
+    {
+      "name": "mcl_core_log_birch",
+      "sourcePath": "textures/mcl_core_log_birch.png",
+      "sha256": "f81857fb90a46813fdf7629ae005d42b72c495a02374c64d965c93f45b6719e2"
+    },
+    {
+      "name": "mcl_core_log_birch_top",
+      "sourcePath": "textures/mcl_core_log_birch_top.png",
+      "sha256": "ebf8d3ed1a47beb3b810c5f54a5f87de525e876e050686112b3da0a61257ddeb"
+    },
+    {
+      "name": "mcl_core_planks_birch",
+      "sourcePath": "textures/mcl_core_planks_birch.png",
+      "sha256": "436546cf928e9fb649c4ce9b1eb226d3b47d38f92d5143dffb074add79571121"
+    },
+    {
+      "name": "mcl_core_grass_block_top",
+      "sourcePath": "textures/mcl_core_grass_block_top.png",
+      "sha256": "f30b371b0536966c9b0b8b0e3d1943f8305383109f88d84b0f9df14e3a33f11f"
+    },
+    {
+      "name": "mcl_core_grass_block_side_overlay",
+      "sourcePath": "textures/mcl_core_grass_block_side_overlay.png",
+      "sha256": "0a2b22adf0e327163f179fd2b662d99c7ccb022536726af9adff82e3e72234d0"
+    },
+    {
+      "name": "default_furnace_front",
+      "sourcePath": "textures/default_furnace_front.png",
+      "sha256": "17f5350e325432bf0396a51896e0830589f0de354bdfbd0aa702c5d6691e3500"
+    },
+    {
+      "name": "default_furnace_side",
+      "sourcePath": "textures/default_furnace_side.png",
+      "sha256": "73f635971d4e6735ab64a3514aa6733897b033549f12558e84b444f6463ee4f6"
+    },
+    {
+      "name": "default_furnace_top",
+      "sourcePath": "textures/default_furnace_top.png",
+      "sha256": "7bddc76399469b6185362291c4147028d11de8f568b4ab5e7cdcc0e074fd2c89"
+    },
+    {
+      "name": "default_furnace_front_active",
+      "sourcePath": "textures/default_furnace_front_active.png",
+      "sha256": "5df013785c9fec4e0a9fa3978980b3f8d6812901a3a45237b39fb469c2a29ebb"
+    },
+    {
+      "name": "default_apple",
+      "sourcePath": "textures/default_apple.png",
+      "sha256": "5f883d309d42d18c1448aef52b5db0acacbaf5b02d99229f4b348bafbb5f8b75"
+    },
+    {
+      "name": "default_stick",
+      "sourcePath": "textures/default_stick.png",
+      "sha256": "1b793c61280342146a976c381b53638b4c37f87ca4c336e64307b36339d395be"
+    },
+    {
+      "name": "default_coal_lump",
+      "sourcePath": "textures/default_coal_lump.png",
+      "sha256": "56aaf39a00be86cfd37550f07ed963c8685595a772b16b93e6bc0e32d84a3108"
+    },
+    {
+      "name": "default_diamond",
+      "sourcePath": "textures/default_diamond.png",
+      "sha256": "552d8cd49056730772eaaf2168ad76fce8f73a4f1fefe9c0e58b53b1e8029e4f"
+    },
+    {
+      "name": "mcl_raw_ores_raw_iron",
+      "sourcePath": "textures/mcl_raw_ores_raw_iron.png",
+      "sha256": "3bbe9b8ef199348b731e743c0ca4dda8f31a30d04ae304c2dddeb8a108e80c10"
+    },
+    {
+      "name": "mcl_raw_ores_raw_gold",
+      "sourcePath": "textures/mcl_raw_ores_raw_gold.png",
+      "sha256": "258a4ce62a158a6d9db733967c0c4e182aa2cc91d196f22afd32d18e7b790bfe"
+    },
+    {
+      "name": "default_steel_ingot",
+      "sourcePath": "textures/default_steel_ingot.png",
+      "sha256": "daca4f5c4a682ddb98c01456078f7eb9d587369fe90a6c06975c7f9eebf06a25"
+    },
+    {
+      "name": "default_gold_ingot",
+      "sourcePath": "textures/default_gold_ingot.png",
+      "sha256": "aba520be45dd2d93c6e0c6fac8d93d3f7632bd6373accc778a5c613597854fb4"
+    },
+    {
+      "name": "mcl_core_charcoal",
+      "sourcePath": "textures/mcl_core_charcoal.png",
+      "sha256": "26dadaffe2f9598e3313796d58677585ce89fc0f868945a737e484682b43c9ee"
+    },
+    {
+      "name": "farming_bread",
+      "sourcePath": "textures/farming_bread.png",
+      "sha256": "28e4e7247b71227b9ce30c7ceb28306229077bb4f1006041558f929b4f1efff3"
+    },
+    {
+      "name": "heart",
+      "sourcePath": "textures/heart.png",
+      "sha256": "4fe25ac3b6a5bd290a5813ab5bf4f1db01d1391f1cea06f7f9134702571495d7"
+    },
+    {
+      "name": "hbhunger_icon",
+      "sourcePath": "textures/hbhunger_icon.png",
+      "sha256": "ac58f5deb485147f4dcb619fe080c8abb1b897ac5f76edaf3a98e19855bb9220"
+    },
+    {
+      "name": "hbhunger_bgicon",
+      "sourcePath": "textures/hbhunger_bgicon.png",
+      "sha256": "fcb7cda77814814647e1e6762e59d2d72dbd4fd8e2ae6a2f548c40b3721bb01f"
+    },
+    {
+      "name": "crack_anylength",
+      "sourcePath": "textures/crack_anylength.png",
+      "sha256": "7bc9ee5b0573cc630d7a03ad5c05359d915e91cac8fd4d1ecfe4e0d6e17a3247"
+    },
+    {
+      "name": "default_tool_woodpick",
+      "sourcePath": "textures/default_tool_woodpick.png",
+      "sha256": "b8c6c355e684ced7c96018c01b4c06399b9fa6bbed8e28fc5fe8f77034afca26"
+    },
+    {
+      "name": "default_tool_woodaxe",
+      "sourcePath": "textures/default_tool_woodaxe.png",
+      "sha256": "8876f4d7a9c546a86e8a57992da5151d54f5a71de429b2b662c080d81174c142"
+    },
+    {
+      "name": "default_tool_woodshovel",
+      "sourcePath": "textures/default_tool_woodshovel.png",
+      "sha256": "c3e114b40489fc6e6d6314d9f8d02255b8c5e9d759d59932588b3f0f0ad83d39"
+    },
+    {
+      "name": "default_tool_stonepick",
+      "sourcePath": "textures/default_tool_stonepick.png",
+      "sha256": "5c3556d47f00303fd369c2f045354a4bf3342b02cca2314df5576017bd9c55f6"
+    },
+    {
+      "name": "default_tool_stoneaxe",
+      "sourcePath": "textures/default_tool_stoneaxe.png",
+      "sha256": "9dc0dbc0f7c2865b4f6af7e2895ff577fee8a0afd3a90b19928638aed7068d24"
+    },
+    {
+      "name": "default_tool_stoneshovel",
+      "sourcePath": "textures/default_tool_stoneshovel.png",
+      "sha256": "1483804d89bb6ed882495044337cf6ff59946cf28444428b5d9abb83498fcefb"
+    },
+    {
+      "name": "default_tool_steelpick",
+      "sourcePath": "textures/default_tool_steelpick.png",
+      "sha256": "277443943575275584420673c575f0e1fdc51db55b4cc39c8004ac2ab529b622"
+    },
+    {
+      "name": "default_tool_steelaxe",
+      "sourcePath": "textures/default_tool_steelaxe.png",
+      "sha256": "6a098e5af06b03f69b207f1e858be43fd4e130ba22c2b085c101018940f2a05d"
+    },
+    {
+      "name": "default_tool_steelshovel",
+      "sourcePath": "textures/default_tool_steelshovel.png",
+      "sha256": "4becad5d299aa129eadf4778ea15ef400b12deb223eaf9f1dddef0bc1d417d13"
+    },
+    {
+      "name": "default_tool_diamondpick",
+      "sourcePath": "textures/default_tool_diamondpick.png",
+      "sha256": "44fe70b29815fff42b7cdb06ddc2ab0d9c88bb8f973c017c75560a52d9ddcc8f"
+    },
+    {
+      "name": "default_tool_diamondaxe",
+      "sourcePath": "textures/default_tool_diamondaxe.png",
+      "sha256": "da3a6873343e28b891260e79bb28a03a04fb62aee7ae3f8371d657bbb70902f2"
+    },
+    {
+      "name": "default_tool_diamondshovel",
+      "sourcePath": "textures/default_tool_diamondshovel.png",
+      "sha256": "0a27cde70aa4d04ade24a20f6c2cc8d7aee9dea04b4e8cc2bc199bb6d51d6379"
+    }
+  ]
+}

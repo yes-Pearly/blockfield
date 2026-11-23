@@ -1,84 +1,89 @@
-# Blockfield · Alpha 0.1
+# Minecraft — Projet web non officiel · Alpha 0.2
 
-Jeu créatif solo en 3D, conçu pour téléphone et tablette, avec clavier-souris sur ordinateur. Le jeu est entièrement statique : GitHub Pages suffit, sans serveur de partie ni compte joueur. Les ressources nécessaires sont incluses dans le dépôt, sans CDN à contacter au démarrage.
+[Jouer sur GitHub Pages](https://yes-pearly.github.io/blockfield/).
 
-**Référence : Minecraft Java Edition.** Blockfield utilise son propre moteur web ; ce n’est pas le moteur officiel Java, une version de Bedrock ou un lanceur Minecraft. Les mondes et les mods Java ne sont pas compatibles. L’objectif à long terme est d’ajouter progressivement les systèmes de jeu, sans prétendre qu’ils existent déjà dans cette alpha.
+Jeu web solo indépendant, inspiré de Minecraft Java Edition. Le moteur officiel Java, les mods et les mondes Java ne sont pas pris en charge. Le dépôt conserve son nom technique `blockfield` pour préserver les liens et les sauvegardes existantes. Le titre du jeu et sa direction artistique ont été repris à la demande de l’utilisateur.
 
-## Jouer
+## Nouveautés de cette version
 
-[Ouvrir le jeu](https://yes-pearly.github.io/blockfield/).
+- Menus gris biseautés, police pixelisée, inventaire à cases, barre rapide, cœurs et faim. Plus de présentation marketing.
+- Textures Pixel Perfection/VoxeLibre sous licence libre, avec [crédits et provenance](ASSETS.md). Les véritables textures d’un pack Java personnel peuvent être importées localement dans Options.
+- **Survie** : inventaire de 36 emplacements, piles limitées, minage progressif, fissures, drops, ramassage et objets jetés.
+- **18 recettes** : planches, bâtons, établi, four, briques et pioches/haches/pelles en quatre matériaux. Grille personnelle 2×2 et établi 3×3 ; le livre de recettes utilise les ressources possédées.
+- Outils à vitesse, niveau requis et durabilité. Casser une pierre à la main ne donne pas de pierres. Les minerais exigent une pioche adaptée.
+- Four : minerai et combustible, cuisson de dix secondes, fer/or, verre, pierre, charbon de bois et briques.
+- Vie et faim simplifiées, nourriture, dégâts de chute, oxygène et noyade. Mort avec objets abandonnés, puis réapparition.
+- Sauvegarde étendue aux inventaires, fours, outils et objets au sol. Les anciennes sauvegardes alpha 0.1 restent lisibles en créatif.
 
-- **Mobile** : joystick gauche ; glisser sur le monde pour regarder ; boutons Casser, Poser et Sauter à droite. Le bouton aile active le vol. En vol, Sauter fait monter et le petit bouton sous les actions fait descendre. Les commandes utilisent des pointeurs séparés pour permettre les actions simultanées.
-- **Ordinateur** : ZQSD, WASD ou flèches ; souris pour regarder ; clic gauche pour casser, clic droit pour poser ; Espace pour sauter ; Ctrl pour courir ; E pour l’inventaire ; F ou double Espace pour le vol ; Maj pour descendre ; 1 à 9 ou molette pour sélectionner ; clic molette pour copier le bloc visé ; Échap pour la pause.
-- **Sans capture de souris** : glisser pour regarder, cliquer pour agir. Les commandes tactiles peuvent aussi être activées manuellement dans les réglages.
+Le créatif conserve blocs illimités et vol. Menu du jeu → Mode permet de passer de Créatif à Survie ; l’inventaire de survie est distinct de la barre créative. Un nouveau monde sans sauvegarde démarre en Survie ; Créer un monde permet de choisir le mode.
 
-Le mode tactile se sélectionne automatiquement selon les capacités de l’appareil. La transparence et la sensibilité sont réglables. Les interfaces sont adaptées au portrait et au paysage ; le paysage laisse davantage de place au monde.
+## Commencer en survie
 
-## Ce qui fonctionne
+1. Approcher un arbre, viser une bûche et maintenir MINER (ou clic gauche) pendant environ trois secondes.
+2. Ramasser la bûche en s’approchant de l’objet au sol.
+3. Ouvrir l’inventaire. Sélectionner la bûche, puis une case de fabrication ; récupérer les quatre planches. Le livre de recettes peut aussi préparer les ingrédients automatiquement.
+4. Fabriquer un établi avec quatre planches, puis des bâtons avec deux planches superposées.
+5. Poser l’établi, le viser et UTILISER / clic droit pour ouvrir la grille 3×3.
+6. Fabriquer une pioche en bois, extraire des pierres, puis fabriquer des outils en pierre et un four.
+7. Utiliser le four : sélectionner le minerai dans l’inventaire puis la case du haut ; sélectionner du bois ou du charbon puis la case du bas. Récupérer le résultat à droite.
 
-- Terrain déterministe par graine, généré par portions de 16 × 16 blocs, chargé au fil de l’exploration et déchargé à distance.
-- Relief, zones sableuses, neige en altitude, arbres de chêne et de bouleau, cavités souterraines et minerais.
-- Mode créatif : marcher, courir, sauter, nager, voler, casser et poser les blocs à six blocs de portée.
-- 41 types de blocs : terrain, bois, verre, eau, briques, minerais, laines colorées, bibliothèque et blocs décoratifs.
-- Inventaire avec catégories, recherche et barre de neuf emplacements.
-- Faces cachées supprimées, ombrage des faces et des coins, génération et maillage dans un Web Worker. Pas de cube individuel par bloc dans la scène.
-- Ciel, nuages cubiques, eau translucide, effet sous l’eau, débris lors de la destruction et effets sonores synthétisés.
-- Sauvegarde locale automatique toutes les 20 secondes et après modification ; sauvegarde manuelle ; export et import JSON validé ; retour au point de départ.
-- Réglages de distance, champ de vision, sensibilité, volume et commandes. Plein écran lorsque le navigateur le permet.
+Les cases de fabrication reçoivent une unité par toucher. Toucher une case remplie remet l’ingrédient dans l’inventaire. Dans le four, sélectionner un emplacement vide de l’inventaire puis toucher une case permet d’en récupérer le contenu.
 
-## Limites actuelles
+## Commandes
 
-La hauteur du monde est de 80 blocs, avec une couche de fond protégée et une portée de construction de six blocs. Une seule sauvegarde locale est conservée. La création ou l’importation d’un monde remplace cette sauvegarde : exporter auparavant permet de garder plusieurs mondes.
+| Action | Mobile | Clavier-souris |
+| --- | --- | --- |
+| Bouger | Joystick gauche | ZQSD / WASD / flèches |
+| Regarder | Glisser sur le monde | Souris ; glisser si la capture est indisponible |
+| Miner | Maintenir MINER | Maintenir clic gauche |
+| Poser / utiliser / manger | UTILISER | Clic droit |
+| Sauter | Bouton de saut | Espace |
+| Courir | — | Ctrl |
+| Inventaire | Bouton en haut | E |
+| Sélectionner | Barre rapide | 1–9 / molette |
+| Jeter un objet | — | G |
+| Vol créatif | Bouton aile | F / double Espace |
+| Monter / descendre en vol | Saut / bouton descente | Espace / Maj |
+| Pause | Bouton pause | Échap |
 
-L’eau est un bloc statique : il n’y a pas encore de simulation d’écoulement. La lumière est un ombrage de rendu, sans propagation lumineuse. La pierre lumineuse a un rendu clair mais n’éclaire pas son voisinage. L’établi et la TNT sont décoratifs. Il n’y a pas de météo, d’animaux, de survie, de fabrication, de redstone fonctionnelle, de dimensions ou de multijoueur.
+Le tactile utilise des pointeurs indépendants pour déplacer, regarder et agir simultanément. Le saut automatique et la transparence sont réglables. Le paysage laisse davantage de place au monde. Les essais en viewport mobile sur ordinateur ne remplacent pas un essai de performance sur le vrai appareil.
 
-Le terrain et les règles sont propres à Blockfield : une graine Java ne reproduit pas un monde Java. La génération est prévue pour des coordonnées raisonnables autour de l’origine ; ce n’est pas un monde réellement infini ni une reproduction exacte des règles de Java Edition.
+## Textures Java personnelles
 
-Le stockage dépend du navigateur. Une navigation privée, l’effacement des données ou les règles d’un appareil géré peuvent supprimer les sauvegardes. **Exporter le monde** permet de garder une copie indépendante. La fluidité doit être mesurée sur le téléphone ou la tablette cible ; les essais sur ordinateur avec un viewport mobile ne remplacent pas un essai sur iPad ou Android.
+Options → Importer des textures Java accepte un ZIP/JAR contenant les PNG reconnus dans `assets/minecraft/textures/block/` ou `item/`. Le fichier est lu **sur l’appareil**, sans envoi à un serveur. Les textures choisies restent dans ce navigateur et ne sont pas incluses dans l’export du monde. Les PNG absents conservent leur version libre par défaut. L’import ne prend pas en charge les modèles, shaders, sons ou tous les formats historiques.
 
-## Développement local
+## Sauvegarde et limites
 
-Aucune installation npm nécessaire. Avec Python 3 :
+Une sauvegarde locale avec enregistrement automatique toutes les vingt secondes et après modification ; export/import JSON validé. Créer/importer un monde remplace cette sauvegarde : exporter auparavant pour la garder. Le format interne et les clés de stockage restent ceux de Blockfield pour assurer la continuité.
+
+Le monde est généré par portions 16×16, sur 80 blocs de hauteur ; la couche de fond est protégée. Portée de 4,5 blocs en survie et six en créatif. La génération et les règles sont propres au projet, sans équivalence de graines ni parité exacte Java.
+
+L’eau est statique. Pas encore de lumière propagée, torches, jour/nuit, agriculture, créatures, IA, combat, redstone, structures avancées ou dimensions. La TNT reste décorative ; la pierre lumineuse n’éclaire pas les voisins. Les recettes et comportements représentent un sous-ensemble initial, pas le catalogue complet de Minecraft.
+
+[Avancement honnête et prochaines étapes](PROGRESS.md) : **environ 3 % de l’objectif solo Java complet, fourchette 2–5 %**, estimation d’ingénierie et non mesure objective exacte.
+
+## Développer et tester
+
+Sans installation de dépendances :
 
 ```sh
 python3 -m http.server 4173 --bind 127.0.0.1
-```
-
-Ouvrir ensuite `http://127.0.0.1:4173/`. Les modules et les workers doivent être servis par HTTP(S), pas ouverts avec `file://`.
-
-Tests avec Node.js 20 ou plus récent :
-
-```sh
 node --test tests/*.test.js
 ```
 
-Le dossier racine est directement publiable dans GitHub Pages : Settings → Pages → Deploy from a branch → `main` → `/ (root)`. `.nojekyll` conserve l’arborescence statique. Le domaine de jeu est `github.io`, distinct de `github.com`.
+Ouvrir `http://127.0.0.1:4173/`. Ne pas utiliser `file://`, car le jeu emploie des modules et un Web Worker.
 
-## Architecture
+26 tests couvrent le monde, les collisions, les contrôles simultanés, l’économie des recettes, la durabilité, les paliers d’outils, la cuisson, les sauvegardes et l’import ZIP de textures.
 
-| Fichier | Rôle |
-| --- | --- |
-| `src/world.js` | Génération déterministe, portions, modifications, rayons de sélection, validation des sauvegardes |
-| `src/mesh.js` | Construction des surfaces visibles et ombrage par sommet |
-| `src/worker.js` | Génération et maillage hors du thread de l’interface |
-| `src/physics.js` | Collisions, saut, nage, vol et déplacement à pas fixe |
-| `src/controls.js` | Clavier, souris, capture du pointeur et gestes simultanés |
-| `src/blocks.js` | Registre des blocs, atlas de textures originales et icônes |
-| `src/storage.js` | IndexedDB avec repli localStorage |
-| `src/main.js` | Rendu, orchestration, interface, flux de sauvegarde et chargement des portions |
+GitHub Pages publie directement `main` → `/ (root)`, avec `.nojekyll`. Le jeu et ses dépendances sont statiques et inclus localement, sans CDN ni serveur de partie.
 
-## Prochaines étapes
+## Organisation
 
-1. Tester sur les vrais appareils, ajuster les commandes et mesurer mémoire, batterie et cadence d’affichage. Ajouter des réglages d’accessibilité et de disposition tactile.
-2. Étendre la structure verticale du monde et son stockage, puis ajouter des biomes, cavernes et structures plus riches. Toute modification du générateur devra conserver la version des mondes existants.
-3. Ajouter l’inventaire de survie, objets, recettes, outils, récolte, points de vie et progression, avec des règles documentées et testées à partir de la référence Java.
-4. Ajouter lumière, fluides, mises à jour des blocs, végétation et comportement de la TNT.
-5. Étendre ensuite aux créatures, circuits, dimensions et autres systèmes. Chaque étape doit être jouable et mesurée avant la suivante.
-
-## Ressources et provenance
-
-Les textures, l’icône et les sons sont originaux et générés par le code du projet. Aucun fichier de Mojang, code décompilé de Minecraft, ressource du wiki ou binaire Java de Minecraft n’est distribué.
-
-Le rendu utilise **Three.js 0.160.1**, inclus localement dans `vendor/three.module.min.js`, avec sa licence MIT dans `vendor/THREE-LICENSE.txt`. Source : [dépôt officiel Three.js](https://github.com/mrdoob/three.js/tree/r160). La documentation [Voxel Geometry](https://threejs.org/manual/pages/voxel-geometry.html) sert de référence technique générale.
-
-Projet indépendant, non officiel, sans affiliation avec Mojang ou Microsoft.
+- `src/world.js`, `mesh.js`, `worker.js` : terrain et rendu des portions.
+- `src/physics.js`, `controls.js` : déplacement et entrées.
+- `src/survival.js` : inventaire, recettes, outils, cuisson et survie, testables sans navigateur.
+- `src/game-ui.js` : interfaces d’inventaire, fabrication et four.
+- `src/resource-pack.js` : import sélectif des PNG Java depuis ZIP/JAR.
+- `src/storage.js` : stockage, avec conservation du format alpha 0.1.
+- `src/blocks.js`, `assets/` : registre et textures, [licences](ASSETS.md).
+- `src/main.js` : orchestration du jeu, rendu, objets au sol et interactions.
