@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
+ <meta name="theme-color" content="#142726"><meta name="description" content="Un monde de blocs à construire. Jeu créatif solo, tactile et clavier-souris.">
+ <title>Blockfield — Un monde à construire</title><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <canvas id="game" aria-label="Monde de construction en trois dimensions" tabindex="0"></canvas>
+ <div id="water-overlay"></div><div id="shade"></div>
+ <div id="menu" class="screen">
+  <header class="menu-header"><div class="brand"><img src="icon.svg" alt=""> PEARLY GAMES</div><span class="version">CRÉATIF <i></i> ALPHA 0.1</span></header>
+  <main class="menu-content">
+   <div class="eyebrow"><span></span> EXPLORER. IMAGINER. CONSTRUIRE.</div>
+   <h1>BLOCK<span>FIELD<span class="title-dot">.</span></span></h1>
+   <p class="menu-description">Un monde à toi.<br>Et tout ce qu’il reste à inventer.</p>
+   <div class="menu-actions"><button id="play" class="primary" disabled><span id="play-label">Préparation du monde…</span><span data-icon="play"></span></button><button id="new-world" class="secondary hidden">Nouveau monde</button></div>
+   <div class="menu-tools"><button id="menu-settings"><span data-icon="settings"></span>Réglages</button><button id="menu-help"><span data-icon="help"></span>Commandes</button><button id="menu-import"><span data-icon="upload"></span>Importer un monde</button></div>
+  </main>
+  <footer class="menu-footer"><span id="menu-status">Génération du paysage <span class="loading-dots">···</span></span><span>SOLO <b>/</b> SANS COMPTE <b>/</b> SAUVEGARDE LOCALE</span></footer>
+  <div class="scene-caption"><span>01 — LES TERRES LIBRES</span><p>La seule limite, c’est l’horizon.</p></div>
+ </div>
+ <div id="hud" class="hidden">
+  <div class="world-badge"><img src="icon.svg" alt=""><div><b>BLOCKFIELD</b><span id="world-mode">Mode créatif</span></div></div>
+  <div class="top-actions"><button id="flight" class="hud-btn" title="Activer le vol (F)" aria-label="Activer le vol"><span data-icon="flight"></span></button><button id="inventory-button" class="hud-btn" title="Inventaire (E)" aria-label="Ouvrir l’inventaire"><span data-icon="grid"></span></button><button id="fullscreen" class="hud-btn" title="Plein écran" aria-label="Plein écran"><span data-icon="expand"></span></button><button id="pause-button" class="hud-btn" title="Pause (Échap)" aria-label="Mettre en pause"><span data-icon="pause"></span></button></div>
+  <div id="crosshair"><i></i><i></i></div><div id="target-label"></div>
+  <div id="coordinates" class="hidden"></div><div id="performance" class="hidden"></div>
+  <div class="bottom-hud"><div id="selected-label">Herbe</div><div id="hotbar" role="toolbar" aria-label="Barre de blocs"></div><div class="desktop-hints"><span><kbd>ZQSD</kbd> / <kbd>WASD</kbd> Bouger</span><span><kbd>E</kbd> Blocs</span><span><kbd>F</kbd> Voler</span><span>Clic G / D · Casser / Poser</span></div></div>
+  <div id="touch-controls" class="touch-ui">
+   <div id="joystick" aria-label="Joystick de déplacement"><div class="stick-ring"></div><div id="stick"></div><span></span></div>
+   <div class="touch-actions"><button id="break-block" class="touch-action" aria-label="Casser un bloc"><span data-icon="pickaxe"></span><small>CASSER</small></button><button id="place-block" class="touch-action" aria-label="Poser un bloc"><span data-icon="block"></span><small>POSER</small></button></div>
+   <div class="touch-movement"><button id="down" class="touch-action mini" aria-label="Descendre en vol"><span data-icon="down"></span></button><button id="jump" class="touch-action" aria-label="Sauter ou monter en vol"><span data-icon="jump"></span></button></div>
+  </div>
+  <div id="touch-hint" class="touch-ui">Glisse sur l’écran pour regarder autour de toi.</div>
+ </div>
+ <div id="modal-layer" class="hidden">
+  <section id="pause-panel" class="panel hidden"><div class="panel-heading"><div><span class="eyebrow">UNE PETITE PAUSE</span><h2>Ton monde t’attend.</h2></div><button class="icon-button" data-close aria-label="Fermer"><span data-icon="close"></span></button></div><p class="muted" id="save-status">Sauvegarde automatique activée.</p><button id="resume" class="primary full">Reprendre la partie <span data-icon="play"></span></button><div class="button-grid"><button id="pause-settings" class="secondary"><span data-icon="settings"></span>Réglages</button><button id="pause-help" class="secondary"><span data-icon="help"></span>Commandes</button><button id="save-now" class="secondary"><span data-icon="save"></span>Sauvegarder</button><button id="export-world" class="secondary"><span data-icon="download"></span>Exporter le monde</button><button id="respawn" class="secondary"><span data-icon="home"></span>Retour au départ</button><button id="quit" class="secondary"><span data-icon="exit"></span>Menu principal</button></div><p class="fine-print">Le monde est enregistré dans ce navigateur. Exporte-le pour le conserver sur un autre appareil.</p></section>
+  <section id="inventory-panel" class="panel wide hidden"><div class="panel-heading"><div><span class="eyebrow">À TOI DE CONSTRUIRE</span><h2>La boîte à idées.</h2></div><button class="icon-button" data-close aria-label="Fermer l’inventaire"><span data-icon="close"></span></button></div><div class="inventory-tools"><div class="tabs" role="tablist"><button class="active" data-category="all" role="tab" aria-selected="true">Tout</button><button data-category="nature" role="tab" aria-selected="false">Nature</button><button data-category="construction" role="tab" aria-selected="false">Construction</button><button data-category="couleurs" role="tab" aria-selected="false">Couleurs</button></div><input id="block-search" placeholder="Rechercher un bloc…" aria-label="Rechercher un bloc" type="search"></div><div id="block-grid"></div><div class="inventory-footer"><span id="inventory-instruction">Choisis un bloc pour remplacer l’emplacement sélectionné.</span><div id="inventory-hotbar"></div></div></section>
+  <section id="settings-panel" class="panel hidden"><div class="panel-heading"><div><span class="eyebrow">À TA FAÇON</span><h2>Les réglages.</h2></div><button class="icon-button" data-back aria-label="Retour"><span data-icon="close"></span></button></div><div class="settings-list">
+   <label>Commandes<select id="setting-controls"><option value="auto">Automatiques</option><option value="touch">Tactiles</option><option value="desktop">Clavier et souris</option></select></label>
+   <label>Distance d’affichage <output id="distance-value"></output><input id="setting-distance" type="range" min="2" max="6" step="1"></label>
+   <label>Sensibilité de la caméra <output id="sensitivity-value"></output><input id="setting-sensitivity" type="range" min="0.3" max="2.5" step="0.1"></label>
+   <label>Champ de vision <output id="fov-value"></output><input id="setting-fov" type="range" min="55" max="100" step="5"></label>
+   <label>Transparence des boutons <output id="opacity-value"></output><input id="setting-opacity" type="range" min="0.15" max="0.8" step="0.05"></label>
+   <label>Volume des effets <output id="volume-value"></output><input id="setting-volume" type="range" min="0" max="1" step="0.1"></label>
+   <label class="toggle-row">Saut automatique sur mobile<input id="setting-autojump" type="checkbox"></label><label class="toggle-row">Afficher les coordonnées<input id="setting-coordinates" type="checkbox"></label><label class="toggle-row">Afficher les performances<input id="setting-fps" type="checkbox"></label>
+  </div><button class="primary full" data-back>C’est parfait</button></section>
+  <section id="help-panel" class="panel hidden"><div class="panel-heading"><div><span class="eyebrow">PRENDRE SES REPÈRES</span><h2>Simple comme un bloc.</h2></div><button class="icon-button" data-back aria-label="Retour"><span data-icon="close"></span></button></div><div class="help-section"><h3>Sur téléphone et tablette</h3><p>Joystick à gauche pour avancer. Glisse ailleurs sur le monde pour regarder. Les boutons à droite servent à casser, poser et sauter. Tu peux utiliser plusieurs doigts en même temps.</p><p>Le bouton aile active le vol. En vol, le bouton de saut te fait monter et le petit bouton dessous te fait descendre. Touche un bloc dans la barre pour le sélectionner.</p></div><div class="help-section"><h3>Avec clavier et souris</h3><div class="key-list"><span>Bouger</span><b>ZQSD / WASD / flèches</b><span>Regarder</span><b>Souris · clic pour capturer</b><span>Casser / poser</span><b>Clic gauche / clic droit</b><span>Sauter / monter</span><b>Espace</b><span>Descendre en vol</span><b>Majuscule</b><span>Courir</span><b>Ctrl</b><span>Activer le vol</span><b>F / double Espace</b><span>Choisir un bloc</span><b>1 à 9 / molette</b><span>Copier le bloc visé</span><b>Clic molette</b><span>Inventaire / pause</span><b>E / Échap</b></div></div><button class="primary full" data-back>À moi de jouer</button></section>
+  <section id="new-panel" class="panel hidden"><div class="panel-heading"><div><span class="eyebrow">LE DÉBUT DE QUELQUE CHOSE</span><h2>Un nouveau monde.</h2></div><button class="icon-button" data-back aria-label="Retour"><span data-icon="close"></span></button></div><p class="muted">Une même graine crée toujours le même paysage.</p><label class="seed-label">Graine du monde<input id="seed-input" maxlength="100" placeholder="Ex. : Les copains" autocomplete="off"></label><p id="replace-warning" class="fine-print hidden">Le nouveau monde remplacera la sauvegarde locale. Exporte d’abord le monde actuel si tu veux le garder.</p><button id="create-world" class="primary full">Créer ce monde <span data-icon="spark"></span></button></section>
+ </div>
+ <div id="loading" class="hidden"><div class="loading-card"><img src="icon.svg" alt=""><b>Le monde prend forme.</b><span id="loading-text">Assemblage des blocs…</span><div class="progress"><i id="loading-progress"></i></div></div></div>
+ <div id="toast" role="status"></div><input id="import-file" type="file" accept=".json,application/json" hidden>
+ <div id="fatal" class="hidden"><h2>Le monde n’a pas pu démarrer.</h2><p id="fatal-message"></p><button onclick="location.reload()">Réessayer</button></div>
+ <noscript>Active JavaScript pour jouer à Blockfield.</noscript>
+ <script>window.addEventListener('error',function(e){if(e.target&&e.target.tagName==='SCRIPT'){document.getElementById('fatal').classList.remove('hidden');document.getElementById('fatal-message').textContent='Un fichier du jeu ne s’est pas chargé. Recharge cette page avec une connexion.'}},true);</script><script type="module" src="src/main.js"></script>
+</body></html>
