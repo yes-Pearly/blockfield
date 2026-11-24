@@ -1,31 +1,36 @@
-# Crédits des ressources
+# Origine des ressources — Alpha 0.3
 
-Ce projet web est non officiel, sans affiliation avec Mojang ou Microsoft. Minecraft est une marque de Mojang/Microsoft. Le titre est une référence au jeu reproduit, pas une déclaration d’origine officielle.
+Projet web non officiel, sans affiliation avec Mojang ou Microsoft. Minecraft et les ressources graphiques Java appartiennent à Mojang/Microsoft. Aucune licence libre n’est attribuée à ces ressources par ce projet.
 
-## Textures incluses par défaut
+## Ressources Java utilisées
 
-**Pixel Perfection**, par **XSSheep**, avec les modifications et contributions de **VoxeLibre**.
+À la demande de l’utilisateur, les ressources visuelles par défaut proviennent de sa copie locale de **Minecraft Java 26.2** : textures de blocs et d’objets, boutons, logo et mention Java Edition, fonds des inventaires, HUD, texture de Steve et glyphes du texte.
 
-- Source : [VoxeLibre](https://github.com/VoxeLibre/VoxeLibre/tree/4492ce6ff8d856daa4567abe2ea689f4e7a39842/textures), révision figée `4492ce6ff8d856daa4567abe2ea689f4e7a39842`.
-- Licence : [Creative Commons Attribution-ShareAlike 3.0 Unported](https://creativecommons.org/licenses/by-sa/3.0/). [Texte juridique](https://creativecommons.org/licenses/by-sa/3.0/legalcode).
-- [Informations de licence du projet source](assets/VoxeLibre-LEGAL.md).
-- Liste exacte des 78 images, chemins d’origine et empreintes : [SOURCES.json](assets/SOURCES.json).
+Le client utilisé correspond à l’empreinte du manifeste de version. [java-sources.json](assets/java-sources.json) conserve la version, les empreintes du client et celles des images extraites, sans chemin personnel ni compte utilisateur. Les 110 images sélectionnées sont réunies sous forme base64 dans `assets/java-26.2.json`. Le JAR et les classes Java du jeu ne font pas partie du projet.
 
-Les PNG sont réunis, sans changement de leurs pixels source, dans `assets/textures.json` sous forme de données base64. Au rendu, ils sont assemblés en atlas ; l’herbe, les feuilles et l’eau reçoivent une teinte. L’eau et les fissures utilisent des frames de leurs bandes d’animation. Ces adaptations visuelles restent sous CC BY-SA 3.0, avec les mêmes crédits. Aucun fichier graphique de Mojang n’est inclus dans la distribution par défaut.
+Les bandes de fissures sont assemblées à partir des dix frames de la version Java. L’herbe et les feuilles utilisent les valeurs prélevées dans les palettes du biome de référence, et l’eau sa teinte `#3f76e4`. Les faces des blocs utilisent les images distinctes du client lorsque disponibles.
 
-## Import personnel de textures Java
+`assets/java-bitmap.ttf` est une adaptation technique des images bitmap `ascii.png`, `accented.png` et `nonlatin_european.png`. Les formes et avances des glyphes sont conservées pour le texte français et les caractères courants, afin de les afficher dans le navigateur. Il ne s’agit pas d’une police officielle publiée en TTF par Mojang.
 
-Options → Importer des textures Java permet de lire localement les PNG reconnus dans `assets/minecraft/textures/block/` et `item/` d’un pack ZIP ou du JAR de sa copie du jeu. Aucun fichier n’est envoyé à un serveur. Les images sélectionnées sont conservées dans le stockage du navigateur de cet appareil ; elles ne sont pas ajoutées au dépôt ni à l’export du monde.
+Les fonds d’inventaire Java sont utilisés à leur échelle native avec des zones interactives superposées. La disposition mobile, les boutons tactiles, le comportement des cases et le moteur restent des développements propres au projet.
 
-L’import prend en charge un sous-ensemble des textures de blocs et d’objets, pas les modèles, shaders, sons, métadonnées avancées ou la totalité d’un pack. Les éléments absents gardent les textures par défaut. Une autre personne ouvrant le lien reçoit les textures libres par défaut. Le bouton Textures par défaut retire la sélection locale.
+## Packs personnels importés
 
-## Police
+Options → Importer des textures Java lit localement les PNG reconnus d’un ZIP/JAR. Ces fichiers importés ne sont pas téléversés, ajoutés au dépôt ou inclus dans l’export du monde. Le bouton de retour aux textures par défaut rétablit les ressources Java 26.2 intégrées. Les modèles, shaders, sons et formats historiques ne sont pas tous pris en charge.
 
-**Monocraft**, © 2022 Idrees Hassan. Source : [IdreesInc/Monocraft](https://github.com/IdreesInc/Monocraft/tree/e498bf70aeb25b4bdcff1e44d878fb2cb4f7c2a9), révision `e498bf70aeb25b4bdcff1e44d878fb2cb4f7c2a9`. Police non modifiée, sous [SIL Open Font License 1.1](assets/Monocraft-LICENSE.txt).
+## Ressources historiques conservées
+
+Le précédent atlas `assets/textures.json` provient de **Pixel Perfection**, par **XSSheep**, avec des contributions de **VoxeLibre**. Il est conservé avec ses sources pour les tests et l’historique, et n’est plus chargé comme pack visuel par défaut.
+
+- Source : [VoxeLibre](https://github.com/VoxeLibre/VoxeLibre/tree/4492ce6ff8d856daa4567abe2ea689f4e7a39842/textures).
+- Licence : [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+- [Licence source](assets/VoxeLibre-LEGAL.md) et [liste des fichiers](assets/SOURCES.json).
+
+Monocraft, © 2022 Idrees Hassan, est également conservée comme ressource historique sous [SIL OFL 1.1](assets/Monocraft-LICENSE.txt), mais le texte courant utilise les glyphes Java.
 
 ## Bibliothèques
 
 - Three.js 0.160.1, auteurs de Three.js, [licence MIT](vendor/THREE-LICENSE.txt).
-- fflate 0.8.2, © Arjun Barrett, [licence MIT](vendor/FFLATE-LICENSE.txt), [source officielle](https://github.com/101arrowz/fflate).
+- fflate 0.8.2, © Arjun Barrett, [licence MIT](vendor/FFLATE-LICENSE.txt).
 
-La présentation HTML/CSS, les contrôles, le moteur de jeu web et les sons synthétisés sont propres à ce projet. Aucun code Java décompilé ou exécutable Minecraft n’est distribué.
+Le moteur web, les règles de jeu et les sons synthétisés sont indépendants du moteur officiel Java. Aucun code Java décompilé ou exécutable Minecraft n’est distribué.

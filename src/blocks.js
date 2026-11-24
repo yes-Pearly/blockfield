@@ -8,24 +8,24 @@ export const BLOCKS=list.map(([name,color,category],id)=>({id,name,color,categor
 export const PALETTE=BLOCKS.slice(1);
 export const DEFAULT_HOTBAR=[1,2,3,4,5,6,7,11,10];
 export const isSolid=id=>!!BLOCKS[id]?.solid;
-export const faceTile=(id,face)=>id===B.FURNACE?(face===4?48:face===2||face===3?49:50):id===B.GRASS?(face===2?42:face===3?B.DIRT:43):id===B.LOG?(face===2||face===3?44:B.LOG):id===B.BIRCH?(face===2||face===3?45:B.BIRCH):id===B.CRAFT?(face===2?46:B.CRAFT):id===B.TNT?(face===2||face===3?47:B.TNT):id;
+export const faceTile=(id,face)=>id===B.FURNACE?(face===4?48:face===2||face===3?49:50):id===B.GRASS?(face===2?42:face===3?B.DIRT:43):id===B.LOG?(face===2||face===3?44:B.LOG):id===B.BIRCH?(face===2||face===3?45:B.BIRCH):id===B.CRAFT?(face===2?46:face===3?B.PLANKS:face===4?B.CRAFT:51):id===B.TNT?(face===2?47:face===3?53:B.TNT):id===B.SANDSTONE?(face===2?54:face===3?55:id):id===B.BOOKS?(face===2||face===3?56:id):id;
 export const ATLAS_COLS=8, ATLAS_ROWS=8, TILE=16, CELL=18;
 function rng(seed){return()=>{seed=(Math.imul(seed,1664525)+1013904223)|0;return(seed>>>0)/4294967296;};}
 let assetURLs={},assetImages={};
 export const assetURL=name=>assetURLs[name]??'';
 export const textureImage=name=>assetImages[name];
 export async function loadTextures(){
- const r=await fetch(new URL('../assets/textures.json',import.meta.url));if(!r.ok)throw Error('Textures indisponibles.');assetURLs=await r.json();try{const custom=JSON.parse(localStorage.getItem('blockfield-java-textures')??'null');if(custom&&typeof custom==='object')Object.assign(assetURLs,custom);}catch{}await Promise.all(Object.entries(assetURLs).map(([name,url])=>new Promise((resolve,reject)=>{if(typeof url!=='string'||!url.startsWith('data:image/png;base64,'))return resolve();const img=new Image();img.onload=()=>{assetImages[name]=img;resolve();};img.onerror=()=>resolve();img.src=url;})));iconCache.clear();globalThis.__blockAtlas=makeAtlas();return globalThis.__blockAtlas;
+ const r=await fetch(new URL('../assets/java-26.2.json?v=0.3.0',import.meta.url));if(!r.ok)throw Error('Textures Java indisponibles.');assetURLs=await r.json();try{const custom=JSON.parse(localStorage.getItem('blockfield-java-textures')??'null');if(custom&&typeof custom==='object')Object.assign(assetURLs,custom);}catch{}await Promise.all(Object.entries(assetURLs).map(([name,url])=>new Promise((resolve,reject)=>{if(typeof url!=='string'||!url.startsWith('data:image/png;base64,'))return resolve();const img=new Image();img.onload=()=>{assetImages[name]=img;resolve();};img.onerror=()=>resolve();img.src=url;})));installJavaUI();iconCache.clear();globalThis.__blockAtlas=makeAtlas();return globalThis.__blockAtlas;
 }
-const textureNames=['','mcl_core_grass_block_top','default_dirt','default_stone','default_cobble','default_wood','default_tree','default_leaves','default_sand','mcl_core_sandstone_normal','default_brick','default_glass','mcl_core_water_source_animation','mcl_core_bedrock','mcl_core_coal_ore','mcl_core_iron_ore','mcl_core_gold_ore','mcl_core_diamond_ore','mcl_core_redstone_ore','default_obsidian','default_clay','default_snow','default_gravel','wool_white','wool_red','wool_orange','wool_yellow','mcl_wool_lime','wool_dark_green','wool_cyan','wool_blue','wool_violet','wool_pink','wool_black','crafting_workbench_front','default_tnt_side','default_bookshelf','mcl_nether_glowstone','default_mossycobble','default_stone_brick','mcl_core_log_birch','mcl_core_planks_birch','mcl_core_grass_block_top','mcl_core_grass_block_side_overlay','default_tree_top','mcl_core_log_birch_top','crafting_workbench_top','default_tnt_top','default_furnace_front','default_furnace_top','default_furnace_side'];
+const textureNames=['','mcl_core_grass_block_top','default_dirt','default_stone','default_cobble','default_wood','default_tree','default_leaves','default_sand','mcl_core_sandstone_normal','default_brick','default_glass','mcl_core_water_source_animation','mcl_core_bedrock','mcl_core_coal_ore','mcl_core_iron_ore','mcl_core_gold_ore','mcl_core_diamond_ore','mcl_core_redstone_ore','default_obsidian','default_clay','default_snow','default_gravel','wool_white','wool_red','wool_orange','wool_yellow','mcl_wool_lime','wool_dark_green','wool_cyan','wool_blue','wool_violet','wool_pink','wool_black','crafting_workbench_front','default_tnt_side','default_bookshelf','mcl_nether_glowstone','default_mossycobble','default_stone_brick','mcl_core_log_birch','mcl_core_planks_birch','mcl_core_grass_block_top','mcl_core_grass_block_side_overlay','default_tree_top','mcl_core_log_birch_top','crafting_workbench_top','default_tnt_top','default_furnace_front','default_furnace_top','default_furnace_side','crafting_workbench_side','grass-side','default_tnt_bottom','sandstone-top','sandstone-bottom','bookshelf-top','default_furnace_front_active'];
 function applyTexture(c,t){
  const img=assetImages[textureNames[t]];if(!img)return;const temp=document.createElement('canvas');temp.width=temp.height=16;const q=temp.getContext('2d');q.imageSmoothingEnabled=false;q.drawImage(img,0,0,img.width,img.width,0,0,16,16);
- if([1,7,12,42,43].includes(t)){q.globalCompositeOperation='multiply';q.fillStyle=t===12?'#448ce4':t===7?'#60a440':'#87b54f';q.fillRect(0,0,16,16);q.globalCompositeOperation='destination-in';q.drawImage(img,0,0,img.width,img.width,0,0,16,16);q.globalCompositeOperation='source-over';}
- c.clearRect(0,0,16,16);if(t===43){const dirt=assetImages.default_dirt;c.drawImage(dirt,0,0,dirt.width,dirt.width,0,0,16,16);}c.drawImage(temp,0,0);
+ if([1,7,12,42,43].includes(t)){q.globalCompositeOperation='multiply';q.fillStyle=t===12?'#3f76e4':t===7?'#77ab2f':'#91bd59';q.fillRect(0,0,16,16);q.globalCompositeOperation='destination-in';q.drawImage(img,0,0,img.width,img.width,0,0,16,16);q.globalCompositeOperation='source-over';}
+ c.clearRect(0,0,16,16);if(t===43){const dirt=assetImages['grass-side']??assetImages.default_dirt;c.drawImage(dirt,0,0,dirt.width,dirt.width,0,0,16,16);}c.drawImage(temp,0,0);
 }
 export function makeAtlas(){
  const canvas=document.createElement('canvas');canvas.width=ATLAS_COLS*CELL;canvas.height=ATLAS_ROWS*CELL;const ctx=canvas.getContext('2d');
- for(let t=0;t<51;t++){
+ for(let t=0;t<58;t++){
   const r=rng(t*873+47),tile=document.createElement('canvas');tile.width=tile.height=16;const c=tile.getContext('2d');const id=t<42?t:t===42?1:t===43?2:t===44?6:t===45?40:t===46?34:35;
   c.fillStyle=BLOCKS[id].color;c.fillRect(0,0,16,16);
   for(let y=0;y<16;y++)for(let x=0;x<16;x++){const n=r();c.fillStyle=n>.5?`rgba(255,255,255,${(n-.5)*.22})`:`rgba(0,0,0,${(.5-n)*.28})`;c.fillRect(x,y,1,1);}
@@ -56,3 +56,8 @@ export function blockIcon(id){
  face([[32,3],[59,17],[32,32],[5,17]],faceTile(id,2),0);face([[5,17],[32,32],[32,61],[5,46]],faceTile(id,4),.13);face([[32,32],[59,17],[59,46],[32,61]],faceTile(id,0),.3);const url=c.toDataURL();iconCache.set(id,url);return url;
 }
 
+
+function installJavaUI(){
+ for(const[name,url]of Object.entries(assetURLs))if(name.startsWith('ui-')&&typeof url==='string'&&url.startsWith('data:image/png;'))document.documentElement.style.setProperty('--java-'+name.slice(3),`url("${url}")`);
+ for(const[id,name]of[['java-logo','ui-logo'],['java-edition','ui-edition']]){const img=document.getElementById(id);if(img&&assetURLs[name])img.src=assetURLs[name];}
+}

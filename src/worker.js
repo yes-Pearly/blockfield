@@ -1,5 +1,5 @@
-import {World} from './world.js';
-import {meshChunk} from './mesh.js';
+import {World} from './world.js?v=0.3.0';
+import {meshChunk} from './mesh.js?v=0.3.0';
 let world;
 self.onmessage=({data:d})=>{
  try{

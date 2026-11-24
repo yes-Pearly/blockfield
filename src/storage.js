@@ -1,4 +1,4 @@
-import {validateSave} from './world.js';
+import {validateSave} from './world.js?v=0.3.0';
 let dbPromise;
 function db(){return dbPromise??=new Promise((resolve,reject)=>{if(!globalThis.indexedDB)return reject(Error('IndexedDB indisponible'));const r=indexedDB.open('blockfield',1);r.onupgradeneeded=()=>r.result.createObjectStore('saves');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
 export async function loadSave(){

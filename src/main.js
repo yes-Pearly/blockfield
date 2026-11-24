@@ -1,13 +1,13 @@
-import * as THREE from '../vendor/three.module.min.js';
-import {B,BLOCKS,PALETTE,DEFAULT_HOTBAR,makeAtlas,blockIcon,loadTextures,assetURL,textureImage,faceTile,ATLAS_COLS,ATLAS_ROWS,CELL} from './blocks.js';
-import {World,chunkKey,raycast,index,HEIGHT,SAVE_VERSION,validateSave} from './world.js';
-import {stepPhysics,overlapsBlock,EYE_HEIGHT} from './physics.js';
-import {loadSave,storeSave,loadSettings,storeSettings} from './storage.js';
-import {Controls} from './controls.js';
-import {fillIcons} from './icons.js';
-import {Survival,ITEMS,itemName,newStack,insert,take,miningInfo,harvest,useTool,returnCrafting,newFurnace,tickFurnace} from './survival.js';
-import {GameUI,fillSlot,itemIcon} from './game-ui.js';
-import {parseResourcePack} from './resource-pack.js';
+import * as THREE from '../vendor/three.module.min.js?v=0.3.0';
+import {B,BLOCKS,PALETTE,DEFAULT_HOTBAR,makeAtlas,blockIcon,loadTextures,assetURL,textureImage,faceTile,ATLAS_COLS,ATLAS_ROWS,CELL} from './blocks.js?v=0.3.0';
+import {World,chunkKey,raycast,index,HEIGHT,SAVE_VERSION,validateSave} from './world.js?v=0.3.0';
+import {stepPhysics,overlapsBlock,EYE_HEIGHT} from './physics.js?v=0.3.0';
+import {loadSave,storeSave,loadSettings,storeSettings} from './storage.js?v=0.3.0';
+import {Controls} from './controls.js?v=0.3.0';
+import {fillIcons} from './icons.js?v=0.3.0';
+import {Survival,ITEMS,itemName,newStack,insert,take,miningInfo,harvest,useTool,returnCrafting,newFurnace,tickFurnace} from './survival.js?v=0.3.0';
+import {GameUI,fillSlot,itemIcon} from './game-ui.js?v=0.3.0';
+import {parseResourcePack} from './resource-pack.js?v=0.3.0';
 
 const $=id=>document.getElementById(id),clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
 const coarse=matchMedia('(pointer:coarse)').matches||navigator.maxTouchPoints>0;
@@ -46,7 +46,15 @@ function updateHeld(){
 }
 const gui=new GameUI({getGame:()=>game,notice:toast,change:()=>refreshInventory(),creative:()=>renderInventory(),select:selectSlot});
 function refreshInventory(){updateHotbar();updateHeld();updateVitals();clearTimeout(saveTimer);saveTimer=setTimeout(()=>save(false),700);}
-function updateVitals(){const survival=game.mode==='survival';document.body.classList.toggle('survival',survival);$('vitals').classList.toggle('hidden',!survival);$('mode-button').textContent='Mode : '+(survival?'Survie':'Créatif');for(const[id,value,image]of[['hearts',game.health,'heart'],['hunger',game.hunger,'hbhunger_icon']]){if($(id).dataset.value===String(value))continue;$(id).dataset.value=value;$(id).replaceChildren();for(let i=0;i<10;i++){const img=document.createElement('img');img.src=assetURL(image);img.alt='';img.classList.toggle('empty-vital',value<=i*2);img.classList.toggle('half-vital',value>i*2&&value<i*2+2);$(id).append(img);}$(id).setAttribute('aria-label',`${id==='hearts'?'Vie':'Faim'} : ${value} sur 20`);}$('air').classList.toggle('hidden',!survival||game.air>=20);$('air').textContent='○'.repeat(Math.ceil(game.air/2));}
+function updateVitals(){
+ const survival=game.mode==='survival';document.body.classList.toggle('survival',survival);$('vitals').classList.toggle('hidden',!survival);$('mode-button').textContent='Mode : '+(survival?'Survie':'Créatif');
+ for(const[id,value,prefix]of[['hearts',game.health,'heart'],['hunger',game.hunger,'food']]){
+  if($(id).dataset.value===String(value))continue;$(id).dataset.value=value;$(id).replaceChildren();
+  for(let i=0;i<10;i++){const part=document.createElement('span');part.className='vital';const empty=document.createElement('img');empty.src=assetURL(`ui-${prefix}-empty`);empty.alt='';part.append(empty);if(value>i*2){const full=document.createElement('img');full.src=assetURL(`ui-${prefix}-${value>=i*2+2?'full':'half'}`);full.alt='';part.append(full);}$(id).append(part);}
+  $(id).setAttribute('aria-label',`${id==='hearts'?'Vie':'Faim'} : ${value} sur 20`);
+ }
+ $('air').classList.toggle('hidden',!survival||game.air>=20);const n=Math.ceil(game.air/2);if($('air').dataset.count!==String(n)){$('air').dataset.count=n;$('air').replaceChildren();for(let i=0;i<10;i++){const img=document.createElement('img');img.src=assetURL(i<n?'ui-air':'ui-air-empty');img.alt='';$('air').append(img);}}
+}
 function damage(amount){if(game.mode!=='survival'||amount<=0)return;game.damage(amount);$('damage-overlay').classList.add('hit');setTimeout(()=>$('damage-overlay').classList.remove('hit'),250);updateVitals();if(game.health<=0)die();}
 function spawnDrop(id,count,x,y,z,durability){if(!ITEMS.has(id)||count<=0)return;if(game.drops.length>=256){const left=insert(game.slots,id,count,durability);if(!left)return;const similar=game.drops.find(d=>d.id===id&&d.count+left<=ITEMS.get(id).stack);if(similar){similar.count+=left;return;}return;}game.drops.push({id,count,...(durability!==undefined?{durability}:{}),x,y,z,vx:(Math.random()-.5)*1.5,vy:2,vz:(Math.random()-.5)*1.5,age:0});}
 function clearDropSprites(){for(const d of game.drops)if(d.sprite)scene.remove(d.sprite);}
@@ -54,7 +62,7 @@ function updateDrops(dt){for(let i=game.drops.length-1;i>=0;i--){const d=game.dr
  if(d.age>.5&&Math.hypot(d.x-player.x,d.y-(player.y+.6),d.z-player.z)<1.8&&game.mode==='survival'){const count=d.count;d.count=insert(game.slots,d.id,d.count,d.durability);if(d.count<count){refreshInventory();sound.play('place');}}
  }d.sprite.position.set(d.x,d.y+.12+Math.sin(d.age*3)*.04,d.z);if(d.count<=0||d.age>300||d.y<0){scene.remove(d.sprite);game.drops.splice(i,1);}}}
 function dropSelected(){if(game.mode!=='survival'||state!=='playing')return;const item=take(game.slots,selected);if(!item)return;spawnDrop(item.id,1,player.x-Math.sin(player.yaw),player.y+1,player.z-Math.cos(player.yaw),item.durability);refreshInventory();}
-function die(){if(state==='death')return;returnCrafting(game);for(let i=0;i<game.slots.length;i++){const stack=game.slots[i];if(stack)spawnDrop(stack.id,stack.count,player.x,player.y+.5,player.z,stack.durability);game.slots[i]=null;}mining=null;setState('death');save(false);}
+function die(){if(state==='death')return;returnCrafting(game);for(const value of [...game.crafting,game.cursor]){const stack=typeof value==='number'?newStack(value):value;if(stack)spawnDrop(stack.id,stack.count,player.x,player.y+.5,player.z,stack.durability);}game.crafting.fill(0);game.cursor=null;for(let i=0;i<game.slots.length;i++){const stack=game.slots[i];if(stack)spawnDrop(stack.id,stack.count,player.x,player.y+.5,player.z,stack.durability);game.slots[i]=null;}mining=null;setState('death');save(false);}
 function respawnPlayer(){Object.assign(player,world.spawn(),{vy:0,pitch:0,flying:false});game.health=20;game.hunger=20;game.saturation=5;game.exhaustion=0;game.air=20;fallPeak=null;updateStreaming(true);updateVitals();updateFlightUI();updateHeld();setState('playing');controls.capture();save(false);}
 
 // Clouds are grouped into meshes, rather than hundreds of separate draw calls.
@@ -94,13 +102,13 @@ async function initWorld(seed,save=null,newMode='survival'){
  $('play').disabled=true;$('play-label').textContent='Préparation du monde…';
  world=new World(seed,save?.edits??[]);const spawn=world.spawn();player={...spawn,yaw:-.7,pitch:-.2,vy:0,flying:false,grounded:false,...save?.player};player.pitch=clamp(player.pitch,-1.5,1.5);player.vy=0;if(game.mode==='survival')player.flying=false;
  hotbar=save?.hotbar??[...DEFAULT_HOTBAR];selected=0;hasSaved=!!save;updateHotbar();updateHeld();updateFlightUI();updateVitals();
- const epochWorld=world;worker=new Worker(new URL('./worker.js',import.meta.url),{type:'module'});worker.postMessage({type:'init',seed:world.seed,edits:world.serializeEdits()});
+ const epochWorld=world;worker=new Worker(new URL('./worker.js?v=0.3.0',import.meta.url),{type:'module'});worker.postMessage({type:'init',seed:world.seed,edits:world.serializeEdits()});
  worker.onerror=e=>{if(epochWorld===world)fatal('Le calcul du monde s’est interrompu. Recharge la page. '+(e.message??''));};
  worker.onmessage=({data:d})=>{
   if(epochWorld!==world)return;
   if(d.type==='error'){fatal('Une erreur est survenue pendant la génération : '+d.message);return;}
   if(d.type!=='chunk')return;const k=chunkKey(d.cx,d.cz);busy=false;queued.delete(k);installChunk(d);loaded++;
-  const pcx=Math.floor(player.x/16),pcz=Math.floor(player.z/16);if(!ready&&Math.abs(d.cx-pcx)<=1&&Math.abs(d.cz-pcz)<=1){initialCount++;$('loading-progress').style.width=`${Math.min(100,initialCount/9*100)}%`;if(initialCount>=9){ready=true;$('play').disabled=false;$('play-label').textContent=hasSaved?'Reprendre le monde':'Entrer dans le monde';$('new-world').classList.remove('hidden');$('menu-status').textContent=(game.mode==='survival'?'Survie':'Créatif')+' • Graine : '+world.seed;initialReady?.();initialReady=null;}}
+  const pcx=Math.floor(player.x/16),pcz=Math.floor(player.z/16);if(!ready&&Math.abs(d.cx-pcx)<=1&&Math.abs(d.cz-pcz)<=1){initialCount++;$('loading-progress').style.width=`${Math.min(100,initialCount/9*100)}%`;if(initialCount>=9){ready=true;$('play').disabled=false;$('play-label').textContent='Jouer dans le monde sélectionné';$('new-world').classList.remove('hidden');$('world-entry-info').textContent=(game.mode==='survival'?'Survie':'Créatif')+' • Graine : '+world.seed;$('menu-status').textContent=(game.mode==='survival'?'Survie':'Créatif')+' • Graine : '+world.seed;initialReady?.();initialReady=null;}}
   if(dirtyAfter.delete(k))enqueue(d.cx,d.cz,true);pump();
  };
  updateStreaming(true);return new Promise(resolve=>{initialReady=resolve;});
@@ -140,11 +148,11 @@ function updateHotbar(){
 function pickBlock(){if(!lastTarget||game.mode!=='creative')return;const found=hotbar.indexOf(lastTarget.id);if(found>=0)selectSlot(found);else{hotbar[selected]=lastTarget.id;selectSlot(selected);}toast(BLOCKS[lastTarget.id].name);}
 function toggleFlight(){if(state!=='playing'||game.mode!=='creative')return;player.flying=!player.flying;player.vy=0;updateFlightUI();toast(player.flying?(controls.touch?'Vol activé · Monte et descends avec les boutons à droite.':'Vol activé · Espace pour monter, Maj pour descendre.'):'Vol désactivé');}
 function updateFlightUI(){document.body.classList.toggle('flying',!!player?.flying);$('flight').classList.toggle('active',!!player?.flying);$('flight').setAttribute('aria-label',player?.flying?'Désactiver le vol':'Activer le vol');$('flight').title=(player?.flying?'Désactiver le vol':'Activer le vol')+' (F)';$('world-mode').textContent=game.mode==='survival'?'Survie':player?.flying?'Créatif · En vol':'Créatif';}
-function setState(value){state=value;document.body.classList.toggle('playing',value==='playing');$('menu').classList.toggle('hidden',value!=='menu');$('hud').classList.toggle('hidden',value==='menu'||value==='loading');$('modal-layer').classList.toggle('hidden',!['pause','inventory','settings','help','new','furnace','death'].includes(value));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('hidden',p.id!==`${value}-panel`));controls.setActive(value==='playing');selection.visible=false;mining=null;cracks.visible=false;$('mining-bar').classList.add('hidden');updateHeld();}
+function setState(value){state=value;gui.hideCursor();document.body.classList.toggle('playing',value==='playing');$('menu').classList.toggle('hidden',value!=='menu');$('hud').classList.toggle('hidden',['menu','worlds','loading'].includes(value));$('modal-layer').classList.toggle('hidden',!['pause','inventory','settings','help','new','furnace','death','worlds'].includes(value));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('hidden',p.id!==`${value}-panel`));controls.setActive(value==='playing');selection.visible=false;mining=null;cracks.visible=false;$('mining-bar').classList.add('hidden');updateHeld();}
 function startPlay(){if(!ready)return;sound.unlock();setState('playing');controls.capture();$('touch-hint').style.opacity='1';setTimeout(()=>$('touch-hint').style.opacity='0',8000);save(false);}
 function pause(){if(state!=='playing')return;setState('pause');save(false);}
-function openPanel(name){if(name==='settings'||name==='help'||name==='new')returnPanel=state==='menu'?'menu':'pause';setState(name);if(name==='inventory')gui.renderInventory(craftSize);if(name==='settings')syncSettings();if(name==='new'){$('seed-input').value='';$('replace-warning').classList.toggle('hidden',!hasSaved);}}
-function closePanel(){if(state==='menu'||state==='loading'||state==='death')return;if(state==='inventory'){returnCrafting(game);refreshInventory();craftSize=2;}if(['settings','help','new'].includes(state))setState(returnPanel);else{setState('playing');controls.capture();}}
+function openPanel(name){if(name==='settings'||name==='help'||name==='new')returnPanel=state==='menu'?'menu':state==='worlds'?'worlds':'pause';setState(name);if(name==='inventory')gui.renderInventory(craftSize);if(name==='settings')syncSettings();if(name==='new'){$('seed-input').value='';$('replace-warning').classList.toggle('hidden',!hasSaved);}}
+function closePanel(){if(state==='menu'||state==='loading'||state==='death')return;if(state==='worlds'){setState('menu');return;}if(state==='inventory'||state==='furnace'){if(!returnCrafting(game)){toast('Place les objets tenus dans une case avant de fermer.');return;}refreshInventory();craftSize=2;}if(['settings','help','new'].includes(state))setState(returnPanel);else{setState('playing');controls.capture();}}
 function snapshot(){return{format:'blockfield',version:SAVE_VERSION,seed:world.seed,updatedAt:new Date().toISOString(),edits:world.serializeEdits(),game:game.serialize(),hotbar:[...hotbar],player:{x:player.x,y:player.y,z:player.z,yaw:player.yaw,pitch:player.pitch,flying:!!player.flying}};}
 async function save(notify=true){
  if(!world||!ready)return;const data=snapshot(),savedWorld=world;$('save-status').textContent='Sauvegarde en cours…';
@@ -167,17 +175,19 @@ function applySettings(){controls.applyMode();document.body.classList.toggle('ha
 function syncSettings(){for(const key of['controls','distance','sensitivity','fov','opacity','volume'])$(`setting-${key}`).value=settings[key];for(const key of['autojump','coordinates','fps'])$(`setting-${key}`).checked=settings[key];updateSettingLabels();}
 function updateSettingLabels(){$('distance-value').textContent=`${settings.distance} portions · ${settings.distance*16} blocs`;$('sensitivity-value').textContent=`${settings.sensitivity.toFixed(1)}×`;$('fov-value').textContent=`${settings.fov}°`;$('opacity-value').textContent=`${Math.round((1-settings.opacity)*100)} %`;$('volume-value').textContent=`${Math.round(settings.volume*100)} %`;}
 
-$('play').onclick=startPlay;$('new-world').onclick=()=>openPanel('new');$('menu-settings').onclick=()=>openPanel('settings');$('menu-help').onclick=()=>openPanel('help');$('menu-import').onclick=()=>$('import-file').click();$('pause-settings').onclick=()=>openPanel('settings');$('pause-help').onclick=()=>openPanel('help');$('resume').onclick=()=>{setState('playing');controls.capture();};$('pause-button').onclick=pause;$('inventory-button').onclick=()=>{craftSize=2;openPanel('inventory');};$('flight').onclick=toggleFlight;$('save-now').onclick=()=>save();$('export-world').onclick=exportWorld;
-$('quit').onclick=async()=>{await save(false);setState('menu');$('play-label').textContent='Reprendre le monde';$('new-world').classList.remove('hidden');};
+$('solo').onclick=()=>setState('worlds');$('worlds-back').onclick=()=>setState('menu');$('play').onclick=startPlay;$('new-world').onclick=()=>openPanel('new');$('menu-settings').onclick=()=>openPanel('settings');$('menu-help').onclick=()=>openPanel('help');$('menu-import').onclick=()=>$('import-file').click();$('pause-settings').onclick=()=>openPanel('settings');$('pause-help').onclick=()=>openPanel('help');$('resume').onclick=()=>{setState('playing');controls.capture();};$('pause-button').onclick=pause;$('inventory-button').onclick=()=>{craftSize=2;openPanel('inventory');};$('flight').onclick=toggleFlight;$('save-now').onclick=()=>save();$('export-world').onclick=exportWorld;
+$('quit').onclick=async()=>{await save(false);setState('menu');$('play-label').textContent='Jouer dans le monde sélectionné';$('new-world').classList.remove('hidden');};
 $('respawn').onclick=()=>{respawnPlayer();toast('Retour au point de départ.');};
 $('death-respawn').onclick=respawnPlayer;
-$('mode-button').onclick=()=>{returnCrafting(game);game.mode=game.mode==='creative'?'survival':'creative';player.flying=false;player.vy=0;game.health=Math.max(1,game.health);fallPeak=null;updateFlightUI();refreshInventory();toast(game.mode==='survival'?'Mode Survie : inventaire limité et récolte activée.':'Mode Créatif : blocs illimités et vol disponibles.');save(false);};
+$('mode-button').onclick=()=>{if(!returnCrafting(game)){toast('Range d’abord les objets tenus.');return;}game.mode=game.mode==='creative'?'survival':'creative';player.flying=false;player.vy=0;game.health=Math.max(1,game.health);fallPeak=null;updateFlightUI();refreshInventory();toast(game.mode==='survival'?'Mode Survie : inventaire limité et récolte activée.':'Mode Créatif : blocs illimités et vol disponibles.');save(false);};
 $('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if(document.documentElement.requestFullscreen)await document.documentElement.requestFullscreen();else toast('Sur cet appareil, ajoute le jeu à l’écran d’accueil pour jouer en plein écran.');}catch{toast('Le plein écran n’est pas disponible dans ce navigateur.');}};
 $('create-world').onclick=async()=>{if(!ready)return;const seed=$('seed-input').value.trim()||`Monde-${Math.random().toString(36).slice(2,8)}`;setState('loading');$('loading').classList.remove('hidden');await initWorld(seed,null,$('new-mode').value);$('loading').classList.add('hidden');startPlay();};
 $('import-file').onchange=e=>importWorld(e.target.files[0]);document.querySelectorAll('[data-close]').forEach(b=>b.onclick=closePanel);document.querySelectorAll('[data-back]').forEach(b=>b.onclick=closePanel);
 $('block-search').oninput=renderInventory;document.querySelectorAll('[data-category]').forEach(b=>b.onclick=()=>{category=b.dataset.category;document.querySelectorAll('[data-category]').forEach(t=>{t.classList.toggle('active',t===b);t.setAttribute('aria-selected',t===b?'true':'false');});renderInventory();});
 for(const key of['controls','distance','sensitivity','fov','opacity','volume','autojump','coordinates','fps'])$(`setting-${key}`).addEventListener('input',e=>{settings[key]=['autojump','coordinates','fps'].includes(key)?e.target.checked:key==='controls'?e.target.value:Number(e.target.value);updateSettingLabels();applySettings();});
-window.addEventListener('resize',()=>{renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();});
+function resizeJavaGUI(){const preferred=innerWidth>=1000&&innerHeight>=660?3:2;const scale=Math.max(1,Math.floor(Math.min(preferred,(innerWidth-30)/176,(innerHeight-70)/166)*4)/4);document.documentElement.style.setProperty('--gui-scale',scale);document.documentElement.style.setProperty('--menu-scale',innerHeight<550?1.5:2);}
+resizeJavaGUI();
+window.addEventListener('resize',()=>{resizeJavaGUI();renderer.setSize(innerWidth,innerHeight);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)save(false);});window.addEventListener('pagehide',()=>save(false));
 setInterval(()=>{if(ready&&state!=='loading')save(false);},20000);
 
@@ -200,7 +210,7 @@ function frame(timestamp){
    swing=Math.max(0,swing-dt*5);held.position.set((camera.aspect<.8?.17:.43)-Math.sin(swing*Math.PI)*.1,-.36-Math.sin(walkPhase)*.012-Math.sin(swing*Math.PI)*.08,-.75);held.rotation.z=-.12-Math.sin(swing*Math.PI)*.3;heldSprite.position.x=camera.aspect<.8?.17:.43;heldSprite.scale.setScalar(camera.aspect<.8?.22:.4);heldSprite.position.y=-.32-Math.sin(swing*Math.PI)*.1;
    const underwater=getBlock(player.x,player.y+EYE_HEIGHT,player.z)===B.WATER;sky.visible=!underwater;document.body.classList.toggle('underwater',underwater);scene.fog.color.set(underwater?'#438b9e':'#b3d6da');scene.background.set(underwater?'#438b9e':'#b3d6da');scene.fog.near=underwater?1:Math.max(18,(settings.distance-1)*16);scene.fog.far=underwater?22:settings.distance*16+9;
    if(settings.coordinates)$('coordinates').textContent=`XYZ ${player.x.toFixed(1)} / ${player.y.toFixed(1)} / ${player.z.toFixed(1)}`;
-  }else if(state==='menu'){
+  }else if(state==='menu'||state==='worlds'){
    const spawn=world.spawn(),angle=timestamp*.000012;camera.position.set(spawn.x+Math.sin(angle+.7)*26,spawn.y+12,spawn.z+Math.cos(angle+.7)*26);targetPos.set(spawn.x,spawn.y+1,spawn.z);camera.lookAt(targetPos);held.visible=false;heldSprite.visible=false;selection.visible=false;sky.visible=true;document.body.classList.remove('underwater');scene.background.set('#b3d6da');scene.fog.color.set('#b3d6da');
   }
   if(settings.fps)$('performance').textContent=`${fps} FPS · ${chunks.size} portions · ${Math.round(renderer.info.render.triangles/1000)}k triangles`;
@@ -214,10 +224,10 @@ try{let saved=null;try{saved=await loadSave();}catch(e){toast(e.message);}await 
 catch(e){fatal('Le jeu n’a pas pu préparer le monde : '+e.message);}
 
 // Read-only counters for diagnostics, without exposing mutation commands.
-Object.defineProperty(window,'blockfield',{get:()=>({version:'0.2.0',state,ready,seed:world?.seed,loadedChunks:chunks.size,pending:queue.length+(busy?1:0),edits:world?.serializeEdits().length??0,player:player?{...player}:null,fps,renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles},touch:controls.touch})});
+Object.defineProperty(window,'blockfield',{get:()=>({version:'0.3.0',state,ready,seed:world?.seed,loadedChunks:chunks.size,pending:queue.length+(busy?1:0),edits:world?.serializeEdits().length??0,player:player?{...player}:null,fps,renderer:{calls:renderer.info.render.calls,triangles:renderer.info.render.triangles},touch:controls.touch})});
 
 $('import-textures').onclick=()=>$('texture-file').click();
 $('texture-file').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{const textures=parseResourcePack(new Uint8Array(await file.arrayBuffer()));localStorage.setItem('blockfield-java-textures',JSON.stringify(textures));await save(false);location.reload();}catch(error){toast(error.message);}finally{e.target.value='';}};
 $('reset-textures').onclick=async()=>{localStorage.removeItem('blockfield-java-textures');await save(false);location.reload();};
 
-try{const t=JSON.parse(localStorage.getItem('blockfield-java-textures')??'null');$('texture-status').textContent=t?'Textures Java locales : '+Object.keys(t).length+' image(s)':'Textures par défaut : Pixel Perfection / VoxeLibre';}catch{}
+try{const t=JSON.parse(localStorage.getItem('blockfield-java-textures')??'null');$('texture-status').textContent=t?'Textures Java locales : '+Object.keys(t).length+' image(s)':'Ressources par défaut : Minecraft Java 26.2';}catch{}

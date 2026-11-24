@@ -1,5 +1,5 @@
-import {B,BLOCKS,faceTile,ATLAS_COLS,ATLAS_ROWS,CELL} from './blocks.js';
-import {SIZE,HEIGHT,index} from './world.js';
+import {B,BLOCKS,faceTile,ATLAS_COLS,ATLAS_ROWS,CELL} from './blocks.js?v=0.3.0';
+import {SIZE,HEIGHT,index} from './world.js?v=0.3.0';
 const faces=[
  {n:[1,0,0],v:[[1,0,1],[1,0,0],[1,1,1],[1,1,0]],shade:.77},
  {n:[-1,0,0],v:[[0,0,0],[0,0,1],[0,1,0],[0,1,1]],shade:.68},
@@ -13,10 +13,10 @@ export function meshChunk(world,cx,cz){
  const opaque=group(),transparent=group(),a=world.generate(cx,cz),ox=cx*16,oz=cz*16;
  const get=(x,y,z)=>x>=0&&x<16&&z>=0&&z<16?(y<0?B.BEDROCK:y>=HEIGHT?0:a[index(x,y,z)]):world.get(x+ox,y,z+oz);
  for(let z=0;z<SIZE;z++)for(let x=0;x<SIZE;x++)for(let y=0;y<HEIGHT;y++){
-  const id=a[index(x,y,z)];if(!id)continue;const info=BLOCKS[id],g=info.transparent&&id!==B.LEAVES?transparent:opaque;
+  const id=a[index(x,y,z)];if(!id)continue;const info=BLOCKS[id],g=id===B.WATER?transparent:opaque;
   for(let f=0;f<6;f++){
    const{n,v,shade}=faces[f],other=get(x+n[0],y+n[1],z+n[2]);
-   if(other!==0&&(!BLOCKS[other].transparent||other===id||(id===B.WATER&&other===B.GLASS)))continue;
+   if(other!==0&&(!BLOCKS[other].transparent||other===id&&id!==B.LEAVES||(id===B.WATER&&other===B.GLASS)))continue;
    if(id===B.WATER&&f===3)continue;
    const tile=faceTile(id,f),u0=(tile%8*CELL+1)/(ATLAS_COLS*CELL),u1=(tile%8*CELL+17)/(ATLAS_COLS*CELL),v0=1-((tile/8|0)*CELL+17)/(ATLAS_ROWS*CELL),v1=1-((tile/8|0)*CELL+1)/(ATLAS_ROWS*CELL),base=g.position.length/3;
    const tangent=[0,1,2].filter(i=>n[i]===0);

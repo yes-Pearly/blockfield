@@ -1,0 +1,339 @@
+{
+  "version": "26.2",
+  "source": "Client Minecraft Java install\u00e9 localement, sans identifiant personnel",
+  "owner": "Mojang / Microsoft",
+  "jarSha1": "2dc72797acbc1b63fc16a11c4ac393605f453754",
+  "matchesOfficialManifest": true,
+  "assets": {
+    "mcl_core_bedrock": {
+      "sha256": "a71e7dce773df8c797506296f58eca840e53ceb3319bc405af7e15e5c25551da"
+    },
+    "mcl_core_log_birch": {
+      "sha256": "81f2e40265758846858019a6b65b7617a205ac654dd2854b8b6cd31426e7c930"
+    },
+    "mcl_core_log_birch_top": {
+      "sha256": "85f362f5c269af976a6b3dcea4130404b58687a7bbd963bc8c743a05817c8382"
+    },
+    "mcl_core_planks_birch": {
+      "sha256": "e1559eaabbee0c1ea0fca983e3bcba1a188e0a29b6c25ea7d725651cc2569216"
+    },
+    "wool_black": {
+      "sha256": "8cefbc855a4ff04f6125ded6a69e8bd21144802fc466b179665c8c0203daffd9"
+    },
+    "wool_blue": {
+      "sha256": "2ca85a3e25a3ea9b0d8209edab2ab93f64e458d8c6baf8215536912159a6e2db"
+    },
+    "default_bookshelf": {
+      "sha256": "cf2b8c0da8e7164162ad4991916492b724c62c31de6c18b2abb7d60ec19ba418"
+    },
+    "default_brick": {
+      "sha256": "3242cb8e441c940156633b0d867e08c887ddaeaa32343b212d4b1e5ca3dae123"
+    },
+    "default_clay": {
+      "sha256": "b07491d561b5814961019829cc802a4ec5ad8cc66a9075572364eacc51350c58"
+    },
+    "mcl_core_coal_ore": {
+      "sha256": "a24553e4cb9cfe70aae48fdb19d8205736135551301dc9c16ecca842d8dd3ae3"
+    },
+    "default_cobble": {
+      "sha256": "bcda95fdf5afa91747657aa198fc0b69ebf44141de30a718075f74045e9a5def"
+    },
+    "crafting_workbench_front": {
+      "sha256": "1659c76a33039640e8bd5584af8db04bf626486432a389bcaf1567e1a45c6464"
+    },
+    "crafting_workbench_side": {
+      "sha256": "e9755fc6da763909b285342eae12c5f7d1cc8462fab695bb157504ea207cda8c"
+    },
+    "crafting_workbench_top": {
+      "sha256": "251e8aa014e30d040261022895853db3204bba241b9b44c11762628550986f2d"
+    },
+    "wool_cyan": {
+      "sha256": "68706949a22ed0877a42ddca38e5ec428039d52ff23e6614f2900e33cb759303"
+    },
+    "mcl_core_diamond_ore": {
+      "sha256": "2ef421308b678d2225aef41affc087ae512a81213a24a98cf456dbe231884122"
+    },
+    "default_dirt": {
+      "sha256": "67197d5371efc3ca1638217c38349665dbd5a977b47bfb20075c858dff87d510"
+    },
+    "default_furnace_front": {
+      "sha256": "aae808f71f1bddf4a25592f7dd3d7f6e9b3adaa739502170766424f4eb6bf9c5"
+    },
+    "default_furnace_front_active": {
+      "sha256": "a4ff7cbdc6502673e9a2d61472a15673f608e70cbfc7b325a9473819906c73b9"
+    },
+    "default_furnace_side": {
+      "sha256": "cada9065da8d26b3a7324a203edb42f2564975519e8504d520e10d530822bb5b"
+    },
+    "default_furnace_top": {
+      "sha256": "59e26149cde8b86ea1d165c1a4ba5c44531a4b7be134b30c93120bba1cefb162"
+    },
+    "default_glass": {
+      "sha256": "cb89c706dce86eac3123cef087d359b5f23098b658a468fb91662b4a9922bcd0"
+    },
+    "mcl_nether_glowstone": {
+      "sha256": "1715e4d1e3209d5931f468b96fd67ca280e4ba27ce993aec6f66c57bf8bf369b"
+    },
+    "mcl_core_gold_ore": {
+      "sha256": "5253e5a8ea32739a5c8cb1d844f0e46c8c85641f77c3d07dcc03645e2914dd1f"
+    },
+    "mcl_core_grass_block_side_overlay": {
+      "sha256": "872056682c3b059c04aba88f8b4e706f2526b907e1acef12626a9f912f573a85"
+    },
+    "mcl_core_grass_block_top": {
+      "sha256": "52f44b64ce884a13dfe35e4b4da2e35898b790dd4d7a5ea536f1b0c0d56d29b4"
+    },
+    "default_gravel": {
+      "sha256": "bc1558fa64b238fabca4cc957e61c232337d410495784b106676bf73e52e16e0"
+    },
+    "wool_dark_green": {
+      "sha256": "a2cd93d4bcead9b808d367fefa17081e12e5bd96ebff6993fc3d486422ecb9ad"
+    },
+    "mcl_core_iron_ore": {
+      "sha256": "72fb64f5a1c7ef0c356b1510b84174576d8cca5ae1de3bb9fa41e3dd1a7a2719"
+    },
+    "mcl_wool_lime": {
+      "sha256": "e9b5aec9ce3ff89f3faf5161c4a07414c8006f0675560d7daaf5496df23c5143"
+    },
+    "default_mossycobble": {
+      "sha256": "68ceb02b0c41e799677320ff46c2c5b6d71450142a3c948e68641a6da66bc469"
+    },
+    "default_leaves": {
+      "sha256": "69c9c7048695e014aee6b8a2c4cb080607bd7a2a5291c06218b8134cbfcdc04f"
+    },
+    "default_tree": {
+      "sha256": "61735859c9c9ea82601191a77c6f256d93619cbaf7cad998a3ed5762877a34e6"
+    },
+    "default_tree_top": {
+      "sha256": "a520800a833ea0c6214481245ab40397aa0c08b4ffc909046dac266386f9fc01"
+    },
+    "default_wood": {
+      "sha256": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3"
+    },
+    "default_obsidian": {
+      "sha256": "d9c7dc812d8e8b995e22caff2b10c1fc663b5e127a94c20a7476cfd88af2cd82"
+    },
+    "wool_orange": {
+      "sha256": "de3ec43fe8ca99026bdda3c036a964990e7d9b08c8b67690e2f975ddbdc5ff68"
+    },
+    "wool_pink": {
+      "sha256": "fd0fb51c2865b3fa69d086277ca8d2b0a7e35a64dea73b90c594b548bb692453"
+    },
+    "wool_violet": {
+      "sha256": "f8f5d7eb9145633d27d80c4c06a9a71e21eaea522c277f81a4d6d9e8fd60f0d9"
+    },
+    "wool_red": {
+      "sha256": "07b48cec9b4610e908025807fb85fa686dd50f17918fa677ce655d28b3ba3464"
+    },
+    "mcl_core_redstone_ore": {
+      "sha256": "742b6a5bad43ec8875f3861ee713ca32a57a1a257c7fefecf981c0355615248f"
+    },
+    "default_sand": {
+      "sha256": "3be385d7e4402f24327dacbf7557d622e7d0cef4650e582457d144d90476f106"
+    },
+    "mcl_core_sandstone_normal": {
+      "sha256": "5ab8fe2fcc44fa6721be20ead4eac049eb257dd1269795ea0d2e6d611f0d51f1"
+    },
+    "default_snow": {
+      "sha256": "a9ca00fc88b23dce0d8e9ee2677d17e8b760a766dfc96ab4b301112908dc88cf"
+    },
+    "default_stone": {
+      "sha256": "b5e10adc72442bfb257ce7ba0b9bbe36475a0c8cdfec89b80dc9517203ff3e9f"
+    },
+    "default_stone_brick": {
+      "sha256": "24415444c9e4815aad4a3a349ecbfc0e027b96be25ac5b7c273c06f16c4fdd2f"
+    },
+    "default_tnt_bottom": {
+      "sha256": "5c6bbcbd86c364df0b276663926b0e8a67ea3ab9cdc0fa6f77338dc5bc45656d"
+    },
+    "default_tnt_side": {
+      "sha256": "e895862292492528e8e55d675acb886245485639fd16a4c075f6e64c06404541"
+    },
+    "default_tnt_top": {
+      "sha256": "e5779ad2c41d1b72cc7f8baea7b5c65f920f97a83b808ee3c643f8c45f31ca41"
+    },
+    "mcl_core_water_source_animation": {
+      "sha256": "683df6ad9c23a50b7ce9323a5fe231aa79f94a63c6d750f3cf87a1fd44422551"
+    },
+    "wool_white": {
+      "sha256": "70c9c9a9901d71ef9a5a89ea2cc4bc0d99ff5e65f733d1467da8b92f746107a5"
+    },
+    "wool_yellow": {
+      "sha256": "cc77805bdc4ccb24d210ec65e304f1c367ae9e9ee0fed404ec99143bf62a2ef2"
+    },
+    "default_apple": {
+      "sha256": "e6a57182db6029fff6d02fc774780fcec9f506b74226985445c91e5e7df5d9bb"
+    },
+    "farming_bread": {
+      "sha256": "eba8a9967e4dd84247f01f630b9817efcf25f7b203a6b81a1b4bf42164a06f7a"
+    },
+    "default_clay_brick": {
+      "sha256": "e99b08880e41cc4e0de8f29b3f9332b7e498aefe67dc540e06ec77990c2b1fee"
+    },
+    "mcl_core_charcoal": {
+      "sha256": "add27cf65866f5c0a6f2c5751182033bc7a59d0ea9ea5dfd7909d5d87443b1c8"
+    },
+    "default_coal_lump": {
+      "sha256": "31a5bf332d28c65e0e83368d4008b31c471023ae391e4533f80cd80ad13f54e0"
+    },
+    "default_diamond": {
+      "sha256": "fd11635ec666c3febb9e6dd6d3ec49cdfb4d16a2a1d595ebd10e56b302417d08"
+    },
+    "default_tool_diamondaxe": {
+      "sha256": "c40234807156fa36f370037f93939c397be76672c2d55b20fb3026d04df97155"
+    },
+    "default_tool_diamondpick": {
+      "sha256": "dfec8e1467b335133521a42c8fde0f124ba7b5c45c0a84fba789736df4f92325"
+    },
+    "default_tool_diamondshovel": {
+      "sha256": "810c79864c331d43c8a6d0c4e9866f91813a5a9602cb97b2a7f6e22bf4448f96"
+    },
+    "default_gold_ingot": {
+      "sha256": "e4c1e2ea6d1fa70299163ebff573b4bfda1ef09099bedc4b5789c598f0a65738"
+    },
+    "default_tool_steelaxe": {
+      "sha256": "8dea40bac06c6f14bb0ad9e8b47de63250f6d6a46ae9439b85ddd1377f1edb49"
+    },
+    "default_steel_ingot": {
+      "sha256": "ca67b14f685bfe1972addf6b44692dab601fe8d27464a30aa8e65f16f716cab2"
+    },
+    "default_tool_steelpick": {
+      "sha256": "5d55017888833783f613632dead4c0fc19e9026e96e10417e65468569d55749b"
+    },
+    "default_tool_steelshovel": {
+      "sha256": "432a399180f3af76ab368f5399950caae1a879fdc6a03c01cd9f765d249a8900"
+    },
+    "mcl_raw_ores_raw_gold": {
+      "sha256": "e2204171fc4722b7b4d2d6fb190792da644310c8d56b38d16e240f8d3649e32c"
+    },
+    "mcl_raw_ores_raw_iron": {
+      "sha256": "b30921d99f902d2b0d6e8e7a1a08bc7638daf9807157f04156cb01cf981c692c"
+    },
+    "default_stick": {
+      "sha256": "da5ede0e54715247de78567df5212a114d0b8a1af183e286fa69cc6af5993711"
+    },
+    "default_tool_stoneaxe": {
+      "sha256": "907180316ed8fce73d54a42d915fb68e094dbff21a1790404925f3d3f15ef408"
+    },
+    "default_tool_stonepick": {
+      "sha256": "b71fe5f52b753c6de7f4c1ff8897cb7e254d54d6b6e14606c16f684df024370f"
+    },
+    "default_tool_stoneshovel": {
+      "sha256": "a58528efe40da0ce83d724779f84ebad08b71d4c2f04f460f9a5eb78551642e0"
+    },
+    "default_tool_woodaxe": {
+      "sha256": "af0435458427c5729da68d8d22cc18542863f966453134a4b444ee90846c1fdd"
+    },
+    "default_tool_woodpick": {
+      "sha256": "c3ed9101c5f4f94a04c78e4d17f1a61a14e19737124ea56a1927b8f93aee68c2"
+    },
+    "default_tool_woodshovel": {
+      "sha256": "fcdb26e1d22b166d8837771707a064a8144b54684ac43974bbf6d6c981d13908"
+    },
+    "ui-button": {
+      "sha256": "0a2e159360200a39e0c7e9c0db0e6aa034ba4e1f8d99698c004084b5ba6e94cb"
+    },
+    "ui-button-hover": {
+      "sha256": "1fcd15ad8971b1e846f848b2211d631f51b9b6533d99ca392a5799af7e9854f9"
+    },
+    "ui-button-disabled": {
+      "sha256": "19866c723b986b57300a5248f6255ceb0e464faf673f73fdcf4158da1195c250"
+    },
+    "ui-cross-button": {
+      "sha256": "1fd65ad9a193b362dbf5f9d4d2a88f2c1a76064719143f0adce6fbc3b156cc5d"
+    },
+    "ui-cross-button-hover": {
+      "sha256": "40850f76e64275f0194e3ec6a6db14e56ad315ff35755c2c1cdd4c8468c84a7e"
+    },
+    "ui-hotbar": {
+      "sha256": "57aad603aafc75cea079d8db04b3029c1b1b5501eb0799971ccaf858876f52a7"
+    },
+    "ui-hotbar-selected": {
+      "sha256": "8c1e1cd977cce0c3a2aaf04036af4904426dafd1a6f4db9665b0d8be1468e80a"
+    },
+    "ui-crosshair": {
+      "sha256": "5dc5e55cd66df2f27fefbd98bb97770844b0d2c24aaada16fe271b35b071e65e"
+    },
+    "ui-heart-full": {
+      "sha256": "acb11da7611dc8239d4da2fe500cca2fe88a2c4facccf42fa7207c0e9dba4a16"
+    },
+    "ui-heart-half": {
+      "sha256": "98d1fca665a309879c19c06b0658ba5407520f13a02d4bf7321b060534491efc"
+    },
+    "ui-heart-empty": {
+      "sha256": "b92355b32f566dd5ec209dcf6f25ddd239fdf967a70af42308ef9607aab3b194"
+    },
+    "ui-food-full": {
+      "sha256": "0ac83b16e7c7c7cd100cbfde07202a6f6df2d805fe35a8a95e003b2d525a760b"
+    },
+    "ui-food-half": {
+      "sha256": "5086cedf18b8b1a66b7df126e3be6589ae281d29ebe3eda785c0fb966c5a19de"
+    },
+    "ui-food-empty": {
+      "sha256": "9bfe8453330b83a1de5339dd35060fda9fd0b93b02d357b4db551189289c699a"
+    },
+    "ui-air": {
+      "sha256": "e686c95add0d0a10396eb51714e881eca00055afafade9eea77baccbaf559d80"
+    },
+    "ui-air-empty": {
+      "sha256": "58a2fa9ff759687e9cc6916e92e22273623cbc01ac89ddfd6ba8f329bce1913c"
+    },
+    "ui-logo": {
+      "sha256": "48cdff280471c0847e9eb695946f1d1d53c5163a609737138f2839efe0d6723b"
+    },
+    "ui-edition": {
+      "sha256": "c3ae995bb9fab322cfe1a3432ce9085a931ae25ddb4fd3475ea3840f75909c98"
+    },
+    "ui-inventory": {
+      "sha256": "c2f850076ad7ebd7a1b27d017fe5f66ac388f54de374de988cb79f86b1d59a65"
+    },
+    "ui-crafting-table": {
+      "sha256": "baf65a599d8bb380b1b03efa1862c20fd29e936b43110d7438b9fe00086075b0"
+    },
+    "ui-furnace": {
+      "sha256": "d700c1af4175a204e9e403c31dea2afdee575dac2bb23493f208b9f0bf3b2dc8"
+    },
+    "ui-slider": {
+      "sha256": "19866c723b986b57300a5248f6255ceb0e464faf673f73fdcf4158da1195c250"
+    },
+    "ui-slider-handle": {
+      "sha256": "f2517ca7604176f2f6b669bf54988af811b03f66bd0369b9964d0318b064d70d"
+    },
+    "ui-slider-handle-hover": {
+      "sha256": "4993928f1426f89f540e221abef79f4086d0a57d14b663bcc008fb0c80ebde74"
+    },
+    "grass-side": {
+      "sha256": "76a677640eb91d6a9aed844bc66e329b1894f89e241a0071333b6678c0854580"
+    },
+    "sandstone-top": {
+      "sha256": "41a5965dbf8a1505ab7ffd9984a16bad566c907c513d5638d5e8260cb5916646"
+    },
+    "sandstone-bottom": {
+      "sha256": "40dc238417a2a36c791589da33a1c1bb37d3c63cbc39c95ad66956cadb6e5ec7"
+    },
+    "bookshelf-top": {
+      "sha256": "65665943ef9c8bcf63fc67d2083ed0c50243f724106d0e4bb1abea5d921b16d3"
+    },
+    "redstone-item": {
+      "sha256": "6d0e6a1fd54142cd3de649e1100c428733512b322a0b0a530f62eae9f86881ec"
+    },
+    "steve": {
+      "sha256": "06628f9cef88520da742ab280a01677ce17c99717f964ed89ed791673121094c"
+    },
+    "crack_anylength": {
+      "sha256": "76b1e466d5a4feab5d0d6c6cced08809b4f2975179d1c7de6f901a427cfd2758"
+    },
+    "ui-recipe-button": {
+      "sha256": "a07e122e8af446135c38fb21cfbbc4bfc94da443ff5257b6e8f9c15b542393b1"
+    },
+    "ui-recipe-hover": {
+      "sha256": "a7c238109b5be7b2d441c4dd8d7ab10b85657262bf6e0c6cae6d236c68c4ad50"
+    },
+    "ui-fire": {
+      "sha256": "36a83a892fe65c55296ac01f63374425ecd42aaba3670b61767c88795a5732e3"
+    },
+    "ui-cook": {
+      "sha256": "e26aac6002403fdd838b6a0c829808a991d32ba2c4d3603f2c4e2f7ee5a4d969"
+    }
+  }
+}

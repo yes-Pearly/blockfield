@@ -1,4 +1,4 @@
-import {isSolid,B} from './blocks.js';
+import {isSolid,B} from './blocks.js?v=0.3.0';
 export const RADIUS=.3,PLAYER_HEIGHT=1.8,EYE_HEIGHT=1.62;
 export function overlapsBlock(player,x,y,z){return player.x+RADIUS>x&&player.x-RADIUS<x+1&&player.y+PLAYER_HEIGHT>y&&player.y<y+1&&player.z+RADIUS>z&&player.z-RADIUS<z+1;}
 export function collides(get,p){

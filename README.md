@@ -1,4 +1,4 @@
-# Minecraft — Projet web non officiel · Alpha 0.2
+# Minecraft — Projet web non officiel · Alpha 0.3
 
 [Jouer sur GitHub Pages](https://yes-pearly.github.io/blockfield/).
 
@@ -6,14 +6,15 @@ Jeu web solo indépendant, inspiré de Minecraft Java Edition. Le moteur officie
 
 ## Nouveautés de cette version
 
-- Menus gris biseautés, police pixelisée, inventaire à cases, barre rapide, cœurs et faim. Plus de présentation marketing.
-- Textures Pixel Perfection/VoxeLibre sous licence libre, avec [crédits et provenance](ASSETS.md). Les véritables textures d’un pack Java personnel peuvent être importées localement dans Options.
-- **Survie** : inventaire de 36 emplacements, piles limitées, minage progressif, fissures, drops, ramassage et objets jetés.
-- **18 recettes** : planches, bâtons, établi, four, briques et pioches/haches/pelles en quatre matériaux. Grille personnelle 2×2 et établi 3×3 ; le livre de recettes utilise les ressources possédées.
-- Outils à vitesse, niveau requis et durabilité. Casser une pierre à la main ne donne pas de pierres. Les minerais exigent une pioche adaptée.
-- Four : minerai et combustible, cuisson de dix secondes, fer/or, verre, pierre, charbon de bois et briques.
-- Vie et faim simplifiées, nourriture, dégâts de chute, oxygène et noyade. Mort avec objets abandonnés, puis réapparition.
-- Sauvegarde étendue aux inventaires, fours, outils et objets au sol. Les anciennes sauvegardes alpha 0.1 restent lisibles en créatif.
+- Les ressources graphiques sont désormais celles de **Minecraft Java 26.2**, extraites de l’installation locale de l’utilisateur : 110 images, avec empreintes et provenance dans [ASSETS.md](ASSETS.md).
+- Boutons et états, logo, réticule, hotbar, cœurs, faim et fonds des interfaces d’origine. Police proportionnelle adaptée directement des glyphes bitmap Java.
+- Inventaires positionnés sur les coordonnées des images originales, avec un facteur d’échelle commun et une prévisualisation 3D de Steve.
+- Prendre, déposer, fusionner et échanger les piles ; clic droit / maintien tactile pour séparer ou poser une unité ; glisser-déposer ; Maj-clic pour transférer entre inventaire et barre rapide.
+- Ingrédients empilés dans les grilles, résultats pris sur le curseur et fabrication répétée avec Maj-clic. La pile tenue sur le curseur est sauvegardée.
+- Migration des anciennes cases de fabrication ; fermeture refusée sans perte d’objet si aucune place n’est disponible pour ranger le curseur et les ingrédients.
+- Accès Solo et choix du monde. Les mondes et leur format de stockage sont conservés.
+
+Les mécaniques de l’alpha 0.2 restent présentes : survie, 18 recettes, outils à durabilité, établi, cuisson, faim, chutes, noyade, mort et réapparition.
 
 Le créatif conserve blocs illimités et vol. Menu du jeu → Mode permet de passer de Créatif à Survie ; l’inventaire de survie est distinct de la barre créative. Un nouveau monde sans sauvegarde démarre en Survie ; Créer un monde permet de choisir le mode.
 
@@ -21,13 +22,13 @@ Le créatif conserve blocs illimités et vol. Menu du jeu → Mode permet de pas
 
 1. Approcher un arbre, viser une bûche et maintenir MINER (ou clic gauche) pendant environ trois secondes.
 2. Ramasser la bûche en s’approchant de l’objet au sol.
-3. Ouvrir l’inventaire. Sélectionner la bûche, puis une case de fabrication ; récupérer les quatre planches. Le livre de recettes peut aussi préparer les ingrédients automatiquement.
+3. Ouvrir l’inventaire. Prendre la bûche, puis la déposer dans une case de fabrication ; récupérer les quatre planches sur le curseur et les déposer dans une case vide. Le livre de recettes peut aussi préparer les ingrédients automatiquement.
 4. Fabriquer un établi avec quatre planches, puis des bâtons avec deux planches superposées.
 5. Poser l’établi, le viser et UTILISER / clic droit pour ouvrir la grille 3×3.
 6. Fabriquer une pioche en bois, extraire des pierres, puis fabriquer des outils en pierre et un four.
-7. Utiliser le four : sélectionner le minerai dans l’inventaire puis la case du haut ; sélectionner du bois ou du charbon puis la case du bas. Récupérer le résultat à droite.
+7. Utiliser le four : prendre le minerai dans l’inventaire puis le déposer dans la case du haut ; prendre du bois ou du charbon puis le déposer dans celle du bas. Récupérer le résultat à droite.
 
-Les cases de fabrication reçoivent une unité par toucher. Toucher une case remplie remet l’ingrédient dans l’inventaire. Dans le four, sélectionner un emplacement vide de l’inventaire puis toucher une case permet d’en récupérer le contenu.
+Dans les inventaires, toucher / clic gauche prend ou dépose une pile. Clic droit ou maintien tactile prend la moitié d’une pile, ou dépose une seule unité lorsqu’un objet est déjà tenu. Glisser déplace une pile. Maj-clic transfère entre l’inventaire principal et la barre rapide. Maj-clic sur le résultat de fabrication produit autant de résultats que les ingrédients empilés le permettent, dans la limite de l’espace disponible.
 
 ## Commandes
 
@@ -50,7 +51,7 @@ Le tactile utilise des pointeurs indépendants pour déplacer, regarder et agir 
 
 ## Textures Java personnelles
 
-Options → Importer des textures Java accepte un ZIP/JAR contenant les PNG reconnus dans `assets/minecraft/textures/block/` ou `item/`. Le fichier est lu **sur l’appareil**, sans envoi à un serveur. Les textures choisies restent dans ce navigateur et ne sont pas incluses dans l’export du monde. Les PNG absents conservent leur version libre par défaut. L’import ne prend pas en charge les modèles, shaders, sons ou tous les formats historiques.
+Options → Importer des textures Java accepte un ZIP/JAR contenant les PNG reconnus dans `assets/minecraft/textures/block/` ou `item/`. Le fichier est lu **sur l’appareil**, sans envoi à un serveur. Les textures choisies restent dans ce navigateur et ne sont pas incluses dans l’export du monde. Les PNG absents conservent les textures Java intégrées par défaut. L’import ne prend pas en charge les modèles, shaders, sons ou tous les formats historiques.
 
 ## Sauvegarde et limites
 
@@ -73,7 +74,7 @@ node --test tests/*.test.js
 
 Ouvrir `http://127.0.0.1:4173/`. Ne pas utiliser `file://`, car le jeu emploie des modules et un Web Worker.
 
-26 tests couvrent le monde, les collisions, les contrôles simultanés, l’économie des recettes, la durabilité, les paliers d’outils, la cuisson, les sauvegardes et l’import ZIP de textures.
+36 tests couvrent le monde, les collisions, les contrôles simultanés, l’économie des recettes, la durabilité, les paliers d’outils, la cuisson, les sauvegardes, l’import ZIP et les transactions de piles. Mille échanges mixtes conservent chaque quantité.
 
 GitHub Pages publie directement `main` → `/ (root)`, avec `.nojekyll`. Le jeu et ses dépendances sont statiques et inclus localement, sans CDN ni serveur de partie.
 
@@ -82,7 +83,9 @@ GitHub Pages publie directement `main` → `/ (root)`, avec `.nojekyll`. Le jeu 
 - `src/world.js`, `mesh.js`, `worker.js` : terrain et rendu des portions.
 - `src/physics.js`, `controls.js` : déplacement et entrées.
 - `src/survival.js` : inventaire, recettes, outils, cuisson et survie, testables sans navigateur.
-- `src/game-ui.js` : interfaces d’inventaire, fabrication et four.
+- `src/game-ui.js`, `java-ui.css` : interfaces Java et leurs zones interactives.
+- `src/inventory.js` : transactions de piles et transferts rapides.
+- `src/skin-preview.js` : aperçu 3D du joueur avec sa texture Java.
 - `src/resource-pack.js` : import sélectif des PNG Java depuis ZIP/JAR.
 - `src/storage.js` : stockage, avec conservation du format alpha 0.1.
 - `src/blocks.js`, `assets/` : registre et textures, [licences](ASSETS.md).

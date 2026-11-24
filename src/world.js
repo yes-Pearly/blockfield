@@ -1,5 +1,5 @@
-import {B, BLOCKS,isSolid} from './blocks.js';
-import {validateGameplay,ITEMS} from './survival.js';
+import {B, BLOCKS,isSolid} from './blocks.js?v=0.3.0';
+import {validateGameplay,ITEMS} from './survival.js?v=0.3.0';
 export const SIZE=16, HEIGHT=80, SEA=22, SAVE_VERSION=1;
 export const chunkKey=(x,z)=>`${x},${z}`;
 export const blockKey=(x,y,z)=>`${x},${y},${z}`;
